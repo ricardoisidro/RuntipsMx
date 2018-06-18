@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RuntipsMx</string>
+    <string name="msg1">Hello RuntipsMx!!!</string>
+    <string name="msg2">Hola  RuntipsMx!!!</string>
+    <string name="txtLoginEntrar">Entrar</string>
+    <string name="txtLoginRegistro">¿Eres nuevo? Registrate</string>
+    <string name="txtLoginLabelUsuario">Usuario</string>
+    <string name="txtLoginLabelPassword">Password</string>
+    <string name="txtLoginRemember">Recordar datos de usuario</string>
+</resources>
