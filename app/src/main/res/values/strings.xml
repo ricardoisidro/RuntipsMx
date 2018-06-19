@@ -4,7 +4,11 @@
     <string name="msg2">Hola  RuntipsMx!!!</string>
     <string name="txtLoginEntrar">Entrar</string>
     <string name="txtLoginRegistro">¿Eres nuevo? Registrate</string>
-    <string name="txtLoginLabelUsuario">Usuario</string>
+    <string name="txtLoginLabelUsuario">Correo electrónico</string>
     <string name="txtLoginLabelPassword">Password</string>
     <string name="txtLoginRemember">Recordar datos de usuario</string>
+    <string name="msgMailNotValid">Correo electrónico no válido</string>
+    <string name="msgPasswordNotValid">Ingresar password</string>
+
+    <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
 </resources>
