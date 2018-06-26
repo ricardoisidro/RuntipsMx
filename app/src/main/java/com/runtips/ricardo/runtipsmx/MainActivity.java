@@ -1,6 +1,8 @@
 package com.runtips.ricardo.runtipsmx;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.johnpersano.supertoasts.library.Style;
-import com.github.johnpersano.supertoasts.library.SuperActivityToast;
-import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
-
 public class MainActivity extends AppCompatActivity{
+
+    private SharedPreferences prefs;
 
     private EditText editTextUser;
     private EditText editTextPass;
@@ -33,16 +33,23 @@ public class MainActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_main);
 
+        prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+
         btnIngresar = findViewById(R.id.btnLogin);
         txtRegister = findViewById(R.id.txtLoginRegistro);
         editTextUser = findViewById(R.id.editLoginUser);
         editTextPass = findViewById(R.id.editLoginPassword);
+        checkboxRemember = findViewById(R.id.checkLoginRemember);
+
+        getCredentials();
 
         txtRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, Presentacion01Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+
                 //finish();
             }
         });
@@ -50,13 +57,29 @@ public class MainActivity extends AppCompatActivity{
         btnIngresar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(validLogin(editTextUser.getText().toString(), editTextPass.getText().toString()))
+                String mail = editTextUser.getText().toString();
+                String pass = editTextPass.getText().toString();
+
+                if(validLogin(mail, pass)){
                     Toast.makeText(MainActivity.this, "Iniciar+", Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent
+                    Intent intent = new Intent(MainActivity.this, StartActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    saveOnPreferences(mail, pass);
+                }
             }
         });
     }
 
+    private void saveOnPreferences(String mail, String password){
+        if(checkboxRemember.isChecked()){
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("email", mail);
+            editor.putString("pass", password);
+
+            editor.apply();
+        }
+    }
     private boolean isValidMail(String email){
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.equals("test@test.com");
 
@@ -80,5 +103,24 @@ public class MainActivity extends AppCompatActivity{
         }
 
 
+    }
+
+    private void getCredentials(){
+        String email = getUserMailPrefs();
+        String password = getUserPassPrefs();
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
+            editTextUser.setText(email);
+            editTextPass.setText(password);
+            checkboxRemember.setChecked(true);
+        }
+
+    }
+
+    private String getUserMailPrefs(){
+        return prefs.getString("email", "");
+    }
+
+    private String getUserPassPrefs(){
+        return prefs.getString("pass", "");
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+        <item
+            android:id="@+id/navToday"
+            android:title="@string/btnStartToday" />
+        <item
+            android:id="@+id/navPaquetes"
+            android:title="@string/menuPaquetesEntrenamiento" />
+        <item
+            android:id="@+id/navDatosUsuario"
+            android:title="@string/menuDatos" />
+        <item
+            android:id="@+id/navContacto"
+            android:title="@string/menuContacto" />
+        <item
+            android:id="@+id/navCerrarSesion"
+            android:title="@string/menuCerrarSesion" />
+</menu>

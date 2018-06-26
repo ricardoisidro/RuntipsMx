@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".StartActivity"
+    tools:showIn="@layout/app_bar_start">
+
+    <ImageView
+        android:id="@+id/imgStart01"
+        android:layout_width="307dp"
+        android:layout_height="166dp"
+        android:layout_marginTop="4dp"
+        app:srcCompat="@drawable/runtipslogo"
+        app:layout_constraintBottom_toTopOf="@+id/txtStartWelcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/txtStartWelcome"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtStartWelcome"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgStart01"
+        />
+
+    <Button
+        android:id="@+id/buttonDia1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay1"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStartWelcome"/>
+
+    <Button
+        android:id="@+id/buttonDia2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia1" />
+
+    <Button
+        android:id="@+id/buttonDia3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia2" />
+
+    <Button
+        android:id="@+id/buttonDia4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia3" />
+
+    <Button
+        android:id="@+id/buttonDia5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay5"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia4" />
+
+    <Button
+        android:id="@+id/buttonDia6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay6"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDia7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia5" />
+
+    <Button
+        android:id="@+id/buttonDia7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStartDay7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia6" />
+
+</android.support.constraint.ConstraintLayout>

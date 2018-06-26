@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">RuntipsMx</string>
-    <string name="msg1">Hello RuntipsMx!!!</string>
-    <string name="msg2">Hola  RuntipsMx!!!</string>
     <string name="txtLoginEntrar">Entrar</string>
     <string name="txtLoginRegistro">¿Eres nuevo? Registrate</string>
     <string name="txtLoginLabelUsuario">Correo electrónico</string>
@@ -11,4 +9,27 @@
     <string name="msgPasswordNotValid">Ingresar password</string>
 
     <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
+
+    <string name="btnStartDay1">Lunes</string>
+    <string name="btnStartDay2">Martes</string>
+    <string name="btnStartDay3">Miércoles</string>
+    <string name="btnStartDay4">Jueves</string>
+    <string name="btnStartDay5">Viernes</string>
+    <string name="btnStartDay6">Sábado</string>
+    <string name="btnStartDay7">Domingo</string>
+    <string name="btnStartToday">Entrenamiento de hoy</string>
+
+    <string name="menuPaquetesEntrenamiento">Paquetes entrenamiento</string>
+    <string name="menuContacto">Contacto</string>
+    <string name="menuDatos">Datos personales</string>
+    <string name="menuCerrarSesion">Cerrar sesión</string>
+
+    <string name="txtStartWelcome">, aquí tienes el entrenamiento de esta semana.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_subtitle">coach@runtipsmx.mx</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
