@@ -28,8 +28,22 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_subtitle">coach@runtipsmx.mx</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Nav header desc</string>
+    <string name="nav_header_subtitle">Nav header subtitle</string>
+
+
     <string name="action_settings">Settings</string>
+
+    <string name="txtContactText1">Cualquier duda o comentario, por favor contáctame por los siguientes medios:</string>
+    <string name="btnContactWhatsapp">WhatsApp</string>
+    <string name="btnContactMail">Correo</string>
+    <string name="txtContactText2">Siguenos también en nuestras redes sociales</string>
+    <string name="btnContactFacebook">Facebook</string>
+    <string name="btnContactInstagram">Instagram</string>
+    <string name="urlWhatsapp">https://</string>
+    <string name="urlMail">coach@runtipsmx.com</string>
+    <string name="urlFacebook">https://www.facebook.com/clubdecorredoresruntipsmx/</string>
+    <string name="urlInstagram">https://www.instagram.com/runtipsmx/</string>
+
 
 </resources>

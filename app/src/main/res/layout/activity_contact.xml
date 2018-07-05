@@ -2,9 +2,90 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
     tools:context=".ContactActivity">
+
+    <ImageView
+        android:id="@+id/imgContact"
+        android:layout_width="wrap_content"
+        android:layout_height="148dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtContactIndications1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/runtipslogo" />
+
+    <TextView
+        android:id="@+id/txtContactIndications1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtContactText1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnContactWhatsapp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgContact" />
+
+    <Button
+        android:id="@+id/btnContactWhatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnContactWhatsapp"
+        app:layout_constraintBottom_toTopOf="@+id/btnContactMail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtContactIndications1" />
+
+    <Button
+        android:id="@+id/btnContactMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnContactMail"
+        app:layout_constraintBottom_toTopOf="@+id/txtContactIndications2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnContactWhatsapp" />
+
+    <TextView
+        android:id="@+id/txtContactIndications2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtContactText2"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnContactFacebook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnContactMail" />
+
+    <Button
+        android:id="@+id/btnContactFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnContactFacebook"
+        app:layout_constraintBottom_toTopOf="@+id/btnContactInstagram"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtContactIndications2" />
+
+    <Button
+        android:id="@+id/btnContactInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnContactInstagram"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnContactFacebook" />
+
 
 </android.support.constraint.ConstraintLayout>

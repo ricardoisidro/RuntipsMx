@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,11 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class StartActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,8 +41,6 @@ public class StartActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Button buttonDia1 = (Button) findViewById(R.id.buttonDia1);
 
-
-
         roundedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +49,6 @@ public class StartActivity extends AppCompatActivity
             }
         });
 
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -63,9 +56,10 @@ public class StartActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        //View headerView = navigationView.getHeaderView(0);
-        //TextView navText = (TextView) findViewById(R.id.txtMenuUserName);
-        //navText.setText("Your text here");
+        View headerView = navigationView.getHeaderView(0);
+        txtUsuario = headerView.findViewById(R.id.txtMenuUserName);
+
+        getUsername();
 
         buttonDia1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -145,14 +139,14 @@ public class StartActivity extends AppCompatActivity
         prefs.edit().clear().apply();
     }
 
-    /*private void getUsername(){
+    private void getUsername(){
         String user = getUserUserPrefs();
         if(!TextUtils.isEmpty(user))
-            txtUsuario.setText("HolaHola");
-    }*/
+            txtUsuario.setText(user);
+    }
 
-    /*private String getUserUserPrefs(){
+    private String getUserUserPrefs(){
         return prefs.getString("email", "");
-    }*/
+    }
 
 }
