@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.WeakHashMap;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -40,7 +41,7 @@ public class ContactActivity extends AppCompatActivity {
         btnWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ContactActivity.this, "Whatsapp", Toast.LENGTH_SHORT).show();
+                startActivity(invokeWhatsapp());
             }
         });
 
@@ -105,6 +106,23 @@ public class ContactActivity extends AppCompatActivity {
         }
         catch(Exception ex){
             return new Intent(Intent.ACTION_VIEW, uri);
+        }
+    }
+
+    public Intent invokeWhatsapp(){
+        String phoneNumber = getResources().getString(R.string.numberWhatsapp);
+        Uri uri = Uri.parse("smsto:+" + phoneNumber);
+        //String text = "Hola desde la app";
+        try{
+            Intent whatsIntent = new Intent(Intent.ACTION_SENDTO, uri);
+           //whatsIntent.setType("text/plain");
+            //whatsIntent.putExtra(Intent.EXTRA_TEXT, text);
+            whatsIntent.setPackage("com.whatsapp");
+            return whatsIntent;
+        }
+        catch (Exception ex){
+            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo", Toast.LENGTH_SHORT).show();
+            return new Intent(Intent.ACTION_SENDTO, uri);
         }
     }
 }
