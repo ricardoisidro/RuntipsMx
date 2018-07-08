@@ -31,7 +31,8 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnWhatsapp = findViewById(R.id.btnContactWhatsapp);
         btnCorreo = findViewById(R.id.btnContactMail);
@@ -41,7 +42,9 @@ public class ContactActivity extends AppCompatActivity {
         btnWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(invokeWhatsapp());
+                if(invokeWhatsapp()!= null){
+                    startActivity(invokeWhatsapp());
+                }
             }
         });
 
@@ -85,10 +88,12 @@ public class ContactActivity extends AppCompatActivity {
 
     private Intent invokeFacebook(){
         String url = getResources().getString(R.string.urlFacebook);
+        String fbId = getResources().getString(R.string.idFacebook);
         Uri uri = Uri.parse(url);
         try{
             this.getPackageManager().getPackageInfo("com.facebook.katana", 0);
-            uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+            //uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+            uri = Uri.parse("fb://page/" + fbId);
             return new Intent(Intent.ACTION_VIEW, uri);
         }
         catch(Exception e){
@@ -122,7 +127,7 @@ public class ContactActivity extends AppCompatActivity {
         }
         catch (Exception ex){
             Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo", Toast.LENGTH_SHORT).show();
-            return new Intent(Intent.ACTION_SENDTO, uri);
+            return null;
         }
     }
 }

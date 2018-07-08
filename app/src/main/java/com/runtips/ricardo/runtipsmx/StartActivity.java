@@ -44,8 +44,7 @@ public class StartActivity extends AppCompatActivity
         roundedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartActivity.this, ContactActivity.class);
-                startActivity(intent);
+                openContactActivity();
             }
         });
 
@@ -115,9 +114,9 @@ public class StartActivity extends AppCompatActivity
             Toast.makeText(StartActivity.this, R.string.menuPaquetesEntrenamiento, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.navDatosUsuario) {
             Toast.makeText(StartActivity.this, R.string.menuDatos, Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.navContacto) {
-            Toast.makeText(StartActivity.this, R.string.menuContacto, Toast.LENGTH_SHORT).show();
             logOut();
+        } else if (id == R.id.navContacto) {
+            openContactActivity();
         } else if (id == R.id.navCerrarSesion) {
             Toast.makeText(StartActivity.this, R.string.menuCerrarSesion, Toast.LENGTH_SHORT).show();
             clearPrefs();
@@ -132,6 +131,11 @@ public class StartActivity extends AppCompatActivity
     private void logOut(){
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void openContactActivity(){
+        Intent intent = new Intent(StartActivity.this, ContactActivity.class);
         startActivity(intent);
     }
 

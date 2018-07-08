@@ -6,7 +6,20 @@
     <string name="txtLoginLabelPassword">Password</string>
     <string name="txtLoginRemember">Recordar datos de usuario</string>
     <string name="msgMailNotValid">Correo electrónico no válido</string>
-    <string name="msgPasswordNotValid">Ingresar password</string>
+    <string name="msgPasswordNotValid">Password incorrecto</string>
+
+    <string name="txtRegisterTitle">Datos de registro</string>
+    <string name="txtRegisterName">Nombre</string>
+    <string name="txtRegisterSurname">Apellidos</string>
+    <string name="txtRegisterBirth">Cumpleaños</string>
+    <string name="txtRegisterGender">Sexo</string>
+    <string name="txtRegisterMan">Hombre</string>
+    <string name="txtRegisterWoman">Mujer</string>
+    <string name="txtRegisterState">Estado</string>
+    <string name="txtRegisterMail">Correo</string>
+    <string name="txtRegisterPhone">Celular (whatsapp)</string>
+    <string name="txtRegisterPassword">Password</string>
+    <string name="txtRegisterConfirmPassword">Confirmar password</string>
 
     <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
 
@@ -43,6 +56,7 @@
     <string name="numberWhatsapp">5215546914686</string>
     <string name="urlMail">coach@runtipsmx.com</string>
     <string name="urlFacebook">https://www.facebook.com/clubdecorredoresruntipsmx/</string>
+    <string name="idFacebook">155134764692651</string>
     <string name="urlInstagram">https://www.instagram.com/runtipsmx/</string>
 
 
