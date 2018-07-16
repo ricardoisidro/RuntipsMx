@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.flash"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -32,20 +36,21 @@
         <activity
             android:name=".StartActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ContactActivity"
             android:parentActivityName=".StartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".StartActivity" />
 
         <activity
             android:name=".RegisterActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
+        <activity android:name=".CameraHeartRateActivity"></activity>
     </application>
 
 </manifest>

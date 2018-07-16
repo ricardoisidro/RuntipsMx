@@ -16,11 +16,54 @@
     <string name="txtRegisterMan">Hombre</string>
     <string name="txtRegisterWoman">Mujer</string>
     <string name="txtRegisterState">Estado</string>
+    <string-array name="spinnerRegisterStates">
+        <item>Aguascalientes</item>
+        <item>BCN</item>
+        <item>BCS</item>
+        <item>Campeche</item>
+        <item>CDMX</item>
+        <item>Chiapas</item>
+        <item>Chihuahua</item>
+        <item>Coahuila</item>
+        <item>Colima</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>México</item>
+        <item>Michoacán</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nuevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </string-array>
     <string name="txtRegisterMail">Correo</string>
-    <string name="txtRegisterPhone">Celular (whatsapp)</string>
+    <string name="txtRegisterPhone">Celular (WhatsApp)</string>
     <string name="txtRegisterPassword">Password</string>
     <string name="txtRegisterConfirmPassword">Confirmar password</string>
+    <string name="txtRegisterConditions">Acepto términos y condiciones</string>
+    <string name="btnRegisterCancel">Cancelar</string>
+    <string name="btnRegisterOK">Continuar</string>
 
+    <string name="txtHeartRateTitle">Finalizar test físico</string>
+    <string name="txtHeartRateInstructions">Para finalizar el test, cubre la cámara
+        con tu dedo indice durante 20 segundos</string>
+    <string name="txtHeartRateInsertTime">Tiempo realizado en el test</string>
+    <string name="txtHeartRateMessage1">Pulso: </string>
+    <string name="txtHeartRateMessage2"> BPM</string>
     <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
 
     <string name="btnStartDay1">Lunes</string>

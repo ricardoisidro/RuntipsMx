@@ -2,13 +2,23 @@ package com.runtips.ricardo.runtipsmx;
 
 import java.util.Calendar;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
 
 public class RegisterActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
@@ -16,7 +26,16 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     private EditText editTextSurname;
     private EditText editTextBirthday;
     private DatePickerDialog dpd;
-
+    private RadioGroup radioGroupGender;
+    private MaterialBetterSpinner spinnerState;
+    private EditText editTextPhone;
+    private EditText editTextMail;
+    private EditText editTextPassword;
+    private EditText editTextPassword2;
+    private TextView txtConditions;
+    private CheckBox checkConditions;
+    private Button btnCancel;
+    private Button btnOK;
 
     public RegisterActivity(){}
 
@@ -28,6 +47,13 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         editTextName = findViewById(R.id.txtRegisterName);
         editTextSurname = findViewById(R.id.txtRegisterSurname);
         editTextBirthday = findViewById(R.id.txtRegisterBirth);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,
+                getResources().getStringArray(R.array.spinnerRegisterStates));
+        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
+                findViewById(R.id.spinnerRegisterState);
+        materialDesignSpinner.setAdapter(arrayAdapter);
 
         editTextBirthday.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -61,6 +87,23 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
 
                     }
                 }
+            }
+        });
+
+        checkConditions = findViewById(R.id.checkLoginRemember);
+        txtConditions = findViewById(R.id.txtRegisterConditions);
+
+        txtConditions.setText(Html.fromHtml(getResources().getText(R.string.txtRegisterConditions) + " <a href='https://www.google.com.mx'>Tap aquí</a>"));
+        txtConditions.setClickable(true);
+        txtConditions.setMovementMethod(LinkMovementMethod.getInstance());
+
+        btnOK = findViewById(R.id.btnRegisterOK);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, CameraHeartRateActivity.class);
+                startActivity(intent);
+
             }
         });
     }

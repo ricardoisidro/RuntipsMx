@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity{
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-
-                //finish();
             }
         });
+
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity{
                 String pass = editTextPass.getText().toString();
 
                 if(validLogin(mail, pass)){
-                    Toast.makeText(MainActivity.this, "Iniciar+", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, StartActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
