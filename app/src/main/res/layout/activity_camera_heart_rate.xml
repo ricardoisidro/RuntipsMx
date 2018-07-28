@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heartRateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    tools:context=".Activities.CameraHeartRateActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/txtHeartPulseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtHeartRateTitle"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="164dp"
+        android:layout_height="93dp"
+        android:src="@drawable/touch_camera"
+        app:layout_constraintBottom_toTopOf="@+id/txtHeartPulseInstructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeartPulseTitle" />
+
+    <TextView
+        android:id="@+id/txtHeartPulseInstructions"
+        android:layout_width="302dp"
+        android:layout_height="70dp"
+        android:text="@string/txtHeartRateInstructions"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/txtPhysicalCamHR"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutHeartPulseTime"
+        app:layout_constraintEnd_toStartOf="@+id/txtAux02"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtAux01"
+        app:layout_constraintTop_toBottomOf="@+id/preview" />
+
+    <SurfaceView
+        android:id="@+id/preview"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        app:layout_constraintBottom_toTopOf="@+id/txtPhysicalCamHR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeartPulseInstructions" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayoutHeartPulseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/txtHeartRateInsertTime"
+        app:layout_constraintBottom_toTopOf="@+id/btnHeartRateOK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPhysicalCamHR">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editHeartRateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtAux01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/txtHeartRateMessage1"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPhysicalCamHR"
+        app:layout_constraintEnd_toStartOf="@+id/txtPhysicalCamHR"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtAux02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/txtHeartRateMessage2"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPhysicalCamHR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtPhysicalCamHR" />
+
+    <Button
+        android:id="@+id/btnHeartRateOK"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtHeartRateContinue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"  />
+
+</android.support.constraint.ConstraintLayout>
