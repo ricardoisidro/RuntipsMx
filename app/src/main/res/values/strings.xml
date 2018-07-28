@@ -60,11 +60,15 @@
 
     <string name="txtHeartRateTitle">Finalizar test físico</string>
     <string name="txtHeartRateInstructions">Para finalizar el test, cubre la cámara
-        con tu dedo indice durante 20 segundos</string>
+        con tu dedo indice durante 20 segundos e ingresa el tiempo que realizaste en el test</string>
     <string name="txtHeartRateInsertTime">Tiempo realizado en el test</string>
     <string name="txtHeartRateMessage1">Pulso: </string>
     <string name="txtHeartRateMessage2"> BPM</string>
+    <string name="txtHeartRateContinue">Enviar resultados</string>
+    <string name="txtHeartRateIncorrectMeasure">Reintenta medir tu pulso</string>
+    <string name="txtHeartRateIncorrectTime">Ingresa valor de tiempo</string>
     <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
+
 
     <string name="btnStartDay1">Lunes</string>
     <string name="btnStartDay2">Martes</string>
@@ -75,12 +79,19 @@
     <string name="btnStartDay7">Domingo</string>
     <string name="btnStartToday">Entrenamiento de hoy</string>
 
+    <string name="btnFreeRun">Correr</string>
+
     <string name="menuPaquetesEntrenamiento">Paquetes entrenamiento</string>
     <string name="menuContacto">Contacto</string>
     <string name="menuDatos">Datos personales</string>
     <string name="menuCerrarSesion">Cerrar sesión</string>
 
-    <string name="txtStartWelcome">, aquí tienes el entrenamiento de esta semana.</string>
+    <string name="txtTab01">Ejercicio libre</string>
+    <string name="txtTab02">Plan semanal</string>
+
+    <string name="txtStartPaidWelcome">, aquí tienes el entrenamiento de esta semana.</string>
+    <string name="txtStartFreeWelcome">, puedes utilizar las siguientes herramientas. Si deseas
+        un entrenamiento personalizado, utiliza los medios de contacto para realizar tu pago.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -101,6 +112,9 @@
     <string name="urlFacebook">https://www.facebook.com/clubdecorredoresruntipsmx/</string>
     <string name="idFacebook">155134764692651</string>
     <string name="urlInstagram">https://www.instagram.com/runtipsmx/</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

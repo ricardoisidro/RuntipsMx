@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
-    tools:context=".RegisterActivity">
+    tools:context=".Activities.RegisterActivity">
 
     <TextView
         android:id="@+id/txtRegisterTitle"
@@ -222,7 +222,7 @@
         android:id="@+id/txtRegisterConditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkRegisterConditions"
         app:layout_constraintEnd_toStartOf="@+id/checkRegisterConditions"
         app:layout_constraintHorizontal_bias="0.5"

@@ -1,9 +1,8 @@
-package com.runtips.ricardo.runtipsmx;
+package com.runtips.ricardo.runtipsmx.Activities;
 
 import java.util.Calendar;
 
 import android.content.Intent;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.runtips.ricardo.runtipsmx.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
@@ -104,6 +104,16 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                 Intent intent = new Intent(RegisterActivity.this, CameraHeartRateActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        btnCancel = findViewById(R.id.btnRegisterCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

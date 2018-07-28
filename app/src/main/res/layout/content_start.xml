@@ -6,10 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".StartActivity"
+    tools:context=".Activities.StartActivity"
     tools:showIn="@layout/app_bar_start">
 
-    <ImageView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tabLayout"/>
+
+    <!--<ImageView
         android:id="@+id/imgStart01"
         android:layout_width="307dp"
         android:layout_height="166dp"
@@ -111,6 +127,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDia6" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDia6" />-->
 
 </android.support.constraint.ConstraintLayout>
