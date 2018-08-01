@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/paidStartLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
-    tools:context=".Fragments.PaidStartFragment">
+    android:orientation="vertical"
+    tools:context=".Fragments.PaidStartFragment"
+    tools:layout_editor_absoluteY="25dp">
 
     <ImageView
         android:id="@+id/imgPaidStart01"
-        android:layout_width="307dp"
-        android:layout_height="166dp"
-        android:layout_above="@+id/txtStartWelcome"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/runtipslogo" />
-
+        android:layout_width="240dp"
+        android:layout_height="103dp"
+        android:src="@drawable/runtipslogo"
+        app:layout_constraintBottom_toTopOf="@+id/txtStartWelcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtStartWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonDia1"
-        android:layout_centerHorizontal="true"
         android:text="@string/txtStartPaidWelcome"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/paidStartListview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPaidStart01" />
 
-    <Button
+    <!--<Button
         android:id="@+id/buttonDia1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,6 +89,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="29dp"
-        android:text="@string/btnStartDay7" />
+        android:text="@string/btnStartDay7" />-->
 
-</RelativeLayout>
+    <ListView
+        android:id="@+id/paidStartListview"
+        android:layout_width="match_parent"
+        android:layout_height="379dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStartWelcome"></ListView>
+
+</android.support.constraint.ConstraintLayout>
