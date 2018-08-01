@@ -62,9 +62,9 @@
             android:layout_height="20dp"
             android:text="30 min"
             android:gravity="center_vertical"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorSecondaryText"
             android:textSize="14sp"
-            android:textStyle="italic" />
+            android:textStyle="normal" />
 
     </LinearLayout>
 
