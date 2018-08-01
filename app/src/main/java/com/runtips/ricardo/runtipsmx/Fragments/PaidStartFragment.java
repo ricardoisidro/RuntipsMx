@@ -58,13 +58,13 @@ public class PaidStartFragment extends Fragment {
         numberDays.add("5");
 
         principaltrain = new ArrayList<String>();
-        principaltrain.add("1");
-        principaltrain.add("2");
-        principaltrain.add("3");
-        principaltrain.add("4");
-        principaltrain.add("3");
-        principaltrain.add("4");
-        principaltrain.add("4");
+        principaltrain.add("Descanso");
+        principaltrain.add("Fuerza");
+        principaltrain.add("Intervalos");
+        principaltrain.add("Correr");
+        principaltrain.add("Fuerza");
+        principaltrain.add("Correr");
+        principaltrain.add("Correr");
 
         secondarytrain = new ArrayList<String>();
         secondarytrain.add("");

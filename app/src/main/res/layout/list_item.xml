@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <TextView
-        android:id="@+id/txtPaidListDayOfWeek"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="0dp"
-        android:text="M"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txtPaidListDayOfWeekNumber"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/txtPaidListDayOfWeek"
-        android:text="30th"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:gravity="center"
-        android:textStyle="bold" />
-
-    <View
-        android:id="@+id/paidListdivider2"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/txtPaidListDayOfWeek"
-        android:background="?android:attr/listDivider" />
-
-    <TextView
-        android:id="@+id/txtPaidListTrainingTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="73dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="Correr"
-
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txtPaidListTrainingDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/txtPaidListTrainingTitle"
-        android:text="30 min"
-        android:gravity="center_vertical"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="italic" />
+    android:layout_height="72dp"
+    android:padding="16dp"
+    android:orientation="horizontal">
 
     <RadioButton
         android:id="@+id/paidListradioTrainingDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:clickable="false"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtPaidListDayOfWeek"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="M"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPaidListDayOfWeekNumber"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="30th"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtPaidListTrainingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Correr"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPaidListTrainingDetail"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="30 min"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</LinearLayout>
