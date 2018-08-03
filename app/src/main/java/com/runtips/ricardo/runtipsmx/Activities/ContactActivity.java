@@ -13,23 +13,20 @@ import com.runtips.ricardo.runtipsmx.R;
 
 public class ContactActivity extends AppCompatActivity {
 
-    private Button btnWhatsapp;
-    private Button btnCorreo;
-    private Button btnFacebook;
-    private Button btnInstagram;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-        btnWhatsapp = findViewById(R.id.btnContactWhatsapp);
-        btnCorreo = findViewById(R.id.btnContactMail);
-        btnFacebook = findViewById(R.id.btnContactFacebook);
-        btnInstagram = findViewById(R.id.btnContactInstagram);
+        Button btnWhatsapp = findViewById(R.id.btnContactWhatsapp);
+        Button btnCorreo = findViewById(R.id.btnContactMail);
+        Button btnFacebook = findViewById(R.id.btnContactFacebook);
+        Button btnInstagram = findViewById(R.id.btnContactInstagram);
 
         btnWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override

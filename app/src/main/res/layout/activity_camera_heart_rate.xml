@@ -88,6 +88,8 @@
             android:id="@+id/editHeartRateTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:hint="mm:ss"
             android:ems="10"
             android:inputType="time"
             android:maxLines="1" />

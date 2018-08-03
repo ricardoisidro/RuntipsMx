@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/runActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    tools:context=".Activities.RunActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Chronometer
+        android:id="@+id/chronometerRun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format="H:MM:SS"
+        app:layout_constraintBottom_toTopOf="@+id/altchronometerRun"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.runtips.ricardo.runtipsmx.Classes.AlternativeChronometer
+        android:id="@+id/altchronometerRun"
+        android:layout_width="fill_parent"
+        android:layout_height="34dp"
+        android:gravity="center"
+        android:text="Chronometer"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRunPause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chronometerRun"/>
+
+    <Button
+        android:id="@+id/btnRunStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnRunPause"
+        app:layout_constraintEnd_toStartOf="@+id/btnRunPause"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnRunPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnRunStop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnRunStart"
+        app:layout_constraintTop_toBottomOf="@+id/altchronometerRun" />
+
+    <Button
+        android:id="@+id/btnRunStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnRunPause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnRunPause" />
+
+
+</android.support.constraint.ConstraintLayout>

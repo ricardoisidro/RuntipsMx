@@ -30,11 +30,20 @@ public class StartActivity extends AppCompatActivity
 
     private SharedPreferences prefs;
     private TextView txtUsuario;
+    private int tabPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        Intent intent = getIntent();
+        if(intent == null) {
+            tabPosition = 0;
+        } else {
+            tabPosition = intent.getIntExtra("position", 0);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -47,15 +56,15 @@ public class StartActivity extends AppCompatActivity
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                int position = tab.getPosition();
+                viewPager.setCurrentItem(position);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
 
             }
 
@@ -65,16 +74,12 @@ public class StartActivity extends AppCompatActivity
             }
         });
 
-
-
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         setSupportActionBar(toolbar);
         FloatingActionButton roundedButton = (FloatingActionButton) findViewById(R.id.fab);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        //Button buttonDia1 = (Button) findViewById(R.id.buttonDia1);
 
         roundedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,13 +100,7 @@ public class StartActivity extends AppCompatActivity
 
         getUsername();
 
-        /*buttonDia1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Toast.makeText(StartActivity.this, "Dia 1", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
+        viewPager.setCurrentItem(tabPosition);
 
     }
 

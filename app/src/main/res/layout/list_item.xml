@@ -10,19 +10,22 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerVertical="true"
+        android:focusable="false"
         android:clickable="false"/>
 
     <LinearLayout
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="false">
 
         <TextView
             android:id="@+id/txtPaidListDayOfWeek"
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:text="M"
+            android:focusable="false"
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/colorPrimaryDark"
@@ -33,6 +36,7 @@
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:text="30th"
+            android:focusable="false"
             android:textSize="14sp"
             android:textColor="@color/colorPrimaryDark"
             android:gravity="center" />
@@ -44,7 +48,8 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:paddingLeft="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="false">
 
         <TextView
             android:id="@+id/txtPaidListTrainingTitle"
@@ -52,6 +57,7 @@
             android:layout_height="20dp"
             android:gravity="center_vertical"
             android:textColor="@color/colorPrimaryDark"
+            android:focusable="false"
             android:text="Correr"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -61,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="30 min"
+            android:focusable="false"
             android:gravity="center_vertical"
             android:textColor="@color/colorSecondaryText"
             android:textSize="14sp"

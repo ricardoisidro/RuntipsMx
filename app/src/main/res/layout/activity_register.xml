@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textSize="16dp"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterSurname" />
@@ -59,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textSize="16dp"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterBirth" />
@@ -81,6 +83,7 @@
             android:id="@+id/txtRegisterBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:ems="10"
             android:inputType="none"
             android:maxLines="1" />
@@ -103,7 +106,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/txtRegisterMan"
-            android:textSize="18sp" />
+            android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/radioRegisterWoman"
@@ -111,7 +114,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/txtRegisterWoman"
-            android:textSize="18sp" />
+            android:textSize="16dp" />
     </RadioGroup>
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -122,6 +125,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:hint="@string/txtRegisterState"
+        android:textSize="16dp"
         android:nextFocusDown="@id/txtRegisterPhone"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutPhone"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +146,7 @@
             android:id="@+id/txtRegisterPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:ems="10"
             android:inputType="phone"
             android:maxLines="1"
@@ -165,6 +170,7 @@
             android:id="@+id/txtRegisterMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:maxLines="1"
@@ -189,6 +195,7 @@
             android:id="@+id/txtRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:ems="10"
             android:inputType="textPassword"
             android:maxLines="1"
@@ -211,6 +218,7 @@
             android:id="@+id/txtRegisterConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:ems="10"
             android:inputType="textPassword"
             android:maxLines="1"

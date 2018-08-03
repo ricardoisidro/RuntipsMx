@@ -41,22 +41,6 @@ public class MyAdapter extends BaseAdapter {
         return this.letterDays.get(position);
     }
 
-    /*public Object getItem2(int position, int aux){
-        Object obj = new Object();
-        switch (aux){
-            case 0:
-                obj = this.letterDays.get(position);
-            case 1:
-                obj = this.numDays.get(position);
-            case 2:
-                obj =  this.mainText.get(position);
-            case 3:
-                obj =  this.auxText.get(position);
-
-        }
-        return obj;
-    }*/
-
     public Object getItem2(int position) {
         return this.numDays.get(position);
     }

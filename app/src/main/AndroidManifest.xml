@@ -5,10 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.flash"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.flash" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait">
@@ -27,35 +28,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Presentacion01Activity"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".Activities.StartActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activities.ContactActivity"
             android:parentActivityName=".Activities.StartActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.YesActionBar" >
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Activities.StartActivity" />
-
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.StartActivity" />
         </activity>
-
         <activity
             android:name=".Activities.RegisterActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activities.CameraHeartRateActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".Activities.RunActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.StartActivity" />
+        </activity>
+        <activity android:name=".Activities.SpeedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.StartActivity" />
+        </activity>
     </application>
 
 </manifest>

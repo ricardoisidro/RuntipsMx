@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                                     Integer.parseInt(data[0])
                             );
                         }
-                        dpd.setVersion(DatePickerDialog.Version.VERSION_1);
+                        dpd.setVersion(DatePickerDialog.Version.VERSION_2);
                         dpd.show(getFragmentManager(), "Datepickerdialog");
                     }
                     catch(Exception ex){

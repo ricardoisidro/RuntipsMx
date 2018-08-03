@@ -20,11 +20,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                FreeStartFragment tab1 = new FreeStartFragment();
-                return tab1;
+                return new FreeStartFragment();
             case 1:
-                PaidStartFragment tab2 = new PaidStartFragment();
-                return tab2;
+                return new PaidStartFragment();
             default:
                 return null;
 
