@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.runtips.ricardo.runtipsmx.Classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
 
 public class MainActivity extends AppCompatActivity{
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -60,25 +62,27 @@ public class MainActivity extends AppCompatActivity{
                 String mail = editTextUser.getText().toString();
                 String pass = editTextPass.getText().toString();
 
+                if(checkboxRemember.isChecked())
+                    Session.saveSharedPreferences(prefs, mail, pass);
+                    //saveOnPreferences(mail, pass);
                 if(validLogin(mail, pass)){
-                    Intent intent = new Intent(MainActivity.this, StartActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    saveOnPreferences(mail, pass);
+                    openStartActivity();
                 }
             }
         });
     }
 
-    private void saveOnPreferences(String mail, String password){
+    /*private void saveOnPreferences(String mail, String password){
         if(checkboxRemember.isChecked()){
-            SharedPreferences.Editor editor = prefs.edit();
+            Session.saveSharedPreferences(prefs, mail, password);
+            /*SharedPreferences.Editor editor = prefs.edit();
             editor.putString("email", mail);
             editor.putString("pass", password);
 
             editor.apply();
         }
-    }
+    }*/
+
     private boolean isValidMail(String email){
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.equals("test@test.com");
 
@@ -100,26 +104,31 @@ public class MainActivity extends AppCompatActivity{
         else{
             return true;
         }
-
-
     }
 
     private void getCredentials(){
-        String email = getUserMailPrefs();
-        String password = getUserPassPrefs();
+        String email = Session.getUserMailPrefs(prefs);
+        String password = Session.getUserPassPrefs(prefs);
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
             editTextUser.setText(email);
             editTextPass.setText(password);
             checkboxRemember.setChecked(true);
+            openStartActivity();
         }
 
     }
 
-    private String getUserMailPrefs(){
+    private void openStartActivity(){
+        Intent intent = new Intent(MainActivity.this, StartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    /*private String getUserMailPrefs(){
         return prefs.getString("email", "");
     }
 
     private String getUserPassPrefs(){
         return prefs.getString("pass", "");
-    }
+    }*/
 }

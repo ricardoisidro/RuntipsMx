@@ -41,7 +41,6 @@ public class FreeStartFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(thisContext, RunActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
             }

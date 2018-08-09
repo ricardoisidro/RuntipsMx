@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.runtips.ricardo.runtipsmx.Classes.PagerAdapter;
+import com.runtips.ricardo.runtipsmx.Classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
 
 public class StartActivity extends AppCompatActivity
@@ -44,6 +45,9 @@ public class StartActivity extends AppCompatActivity
             tabPosition = intent.getIntExtra("position", 0);
         }
 
+        //getSupportFragmentManager().beginTransaction()
+          //      .add()
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -52,10 +56,12 @@ public class StartActivity extends AppCompatActivity
         //tabLayout.setTabGravity(TabLayout.GR);
 
         final ViewPager viewPager = findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        //viewPager.setCurrentItem(tabPosition);
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -153,7 +159,7 @@ public class StartActivity extends AppCompatActivity
             openContactActivity();
         } else if (id == R.id.navCerrarSesion) {
             Toast.makeText(StartActivity.this, R.string.menuCerrarSesion, Toast.LENGTH_SHORT).show();
-            clearPrefs();
+            Session.removeSharedPreferences(prefs);
             logOut();
         }
 
@@ -173,18 +179,20 @@ public class StartActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void clearPrefs(){
+    /*private void clearPrefs(){
         prefs.edit().clear().apply();
-    }
+    }*/
 
     private void getUsername(){
-        String user = getUserUserPrefs();
+        String user = Session.getUserMailPrefs(prefs);
         if(!TextUtils.isEmpty(user))
             txtUsuario.setText(user);
     }
 
-    private String getUserUserPrefs(){
+    /*private String getUserUserPrefs(){
         return prefs.getString("email", "");
-    }
+    }*/
+
+
 
 }

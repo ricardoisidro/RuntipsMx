@@ -101,14 +101,12 @@ public class PaidStartFragment extends Fragment {
                     case 3:
                         Intent intent = new Intent(thisContext, RunActivity.class);
                         intent.putExtra("position", 1);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         //getActivity().finish();
                         break;
                     case 2:
                         Intent intent2 = new Intent(thisContext, SpeedActivity.class);
                         intent2.putExtra("position", 1);
-                        intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent2);
                         //getActivity().finish();
                         break;

@@ -16,13 +16,11 @@ import com.runtips.ricardo.runtipsmx.R;
 
 public class RunActivity extends AppCompatActivity {
 
-    private Chronometer chronometer;
     private AlternativeChronometer chrono;
     private Button btnStart;
     private Button btnStop;
     private Button btnPause;
     private int tabPosition;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +41,7 @@ public class RunActivity extends AppCompatActivity {
             tabPosition = bundle.getInt("position");
         }
 
-        chronometer = findViewById(R.id.chronometerRun);
         chrono = findViewById(R.id.altchronometerRun);
-
-        chronometer.setFormat("Time: %s");
 
         btnStart = findViewById(R.id.btnRunStart);
         btnStop = findViewById(R.id.btnRunStop);
@@ -55,8 +50,9 @@ public class RunActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                chrono.setBase(SystemClock.elapsedRealtime());
                 chrono.start();
-                chronometer.start();
             }
         });
 
@@ -64,7 +60,6 @@ public class RunActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 chrono.setBase(SystemClock.elapsedRealtime());
-                chronometer.setBase(SystemClock.elapsedRealtime());
             }
         });
 
@@ -72,17 +67,19 @@ public class RunActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 chrono.stop();
-                chronometer.stop();
             }
         });
 
 
     }
 
+    // TODO Check difference between FLAGS. Apparently both are similar
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(RunActivity.this, StartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("position", tabPosition);
         startActivity(intent);
     }
@@ -95,6 +92,7 @@ public class RunActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent(RunActivity.this, StartActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("position", tabPosition);
                 startActivity(intent);
                 return true;
