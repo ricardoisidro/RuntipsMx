@@ -187,9 +187,9 @@ public class StartActivity extends AppCompatActivity
     }*/
 
     private void getUsername(){
-        String user = Session.getUserMailPrefs(prefs);
+        String user = Session.getUserNamePrefs(prefs);
         if(!TextUtils.isEmpty(user))
-            txtUsuario.setText(user);
+            txtUsuario.setText("Hola: " + user);
     }
 
     /*private String getUserUserPrefs(){

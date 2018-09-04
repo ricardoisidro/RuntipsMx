@@ -3,6 +3,7 @@ package com.runtips.ricardo.runtipsmx.Activities;
 import java.util.Calendar;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.runtips.ricardo.runtipsmx.API.API;
 import com.runtips.ricardo.runtipsmx.API.APIServices.RuntipsmxService;
+import com.runtips.ricardo.runtipsmx.Classes.Session;
 import com.runtips.ricardo.runtipsmx.Models.Data;
 import com.runtips.ricardo.runtipsmx.Models.Post;
 import com.runtips.ricardo.runtipsmx.Models.UserResponse;
@@ -59,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     private Call<UserResponse> userResponseCall;
     private RuntipsmxService runtipsmxService;
 
-    //private SharedPreferences
+    private SharedPreferences prefs;
 
     public RegisterActivity(){}
 
@@ -67,6 +69,8 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         editTextName = findViewById(R.id.txtRegisterName);
         editTextSurname = findViewById(R.id.txtRegisterSurname);
@@ -135,12 +139,12 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                 runtipsmxService = API.getApi().create(RuntipsmxService.class);
 
                 String sex = "";
-                String mail = editTextMail.getText().toString();
+                final String mail = editTextMail.getText().toString();
                 String celphone = editTextPhone.getText().toString();
-                String name = editTextName.getText().toString();
+                final String name = editTextName.getText().toString();
                 String surname = editTextSurname.getText().toString();
                 String birth = editTextBirthday.getText().toString();
-                String pass = editTextPassword.getText().toString();
+                final String pass = editTextPassword.getText().toString();
                 int opc = radioGroupGender.getCheckedRadioButtonId();
                 switch (opc){
                     case R.id.radioRegisterMan:
@@ -155,10 +159,6 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                 Post post = new Post();
                 post.setUser(user);
 
-                //Data data = new Data(0, "", "", "", 0, "", "", "");
-                //UserResponse resp = new UserResponse();
-                //resp.setData(data);
-
                 userResponseCall = runtipsmxService.createUser(post);
                 userResponseCall.enqueue(new Callback<UserResponse>() {
                     @Override
@@ -168,7 +168,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                             UserResponse userResponse = response.body();
                             Toast.makeText(RegisterActivity.this, String.valueOf(userResponse.getData().getId()) + ", bienvenid@ " +
                                     userResponse.getData().getName().toString(), Toast.LENGTH_LONG).show();
-                            updateSharedPreferences();
+                            Session.saveSharedPreferences(prefs, mail, pass, name);
                             Intent intent = new Intent(RegisterActivity.this, CameraHeartRateActivity.class);
                             startActivity(intent);
                         }
@@ -182,24 +182,8 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                     }
                 });
 
-                /*userCall.enqueue(new Callback<Post>() {
-                    @Override
-                    public void onResponse(Call<Post> call, Response<Post> response) {
-                        if(response.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, response.code(), Toast.LENGTH_LONG).show();
-                            User user = response.body();
-                            setResult(user);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-
-                        Log.e("TAG", "Error ");
-                    }
-                });*/
-
-
+                post = null;
+                user = null;
 
             }
         });
@@ -214,10 +198,6 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                 finish();
             }
         });
-    }
-
-    private void updateSharedPreferences() {
-
     }
 
     @Override

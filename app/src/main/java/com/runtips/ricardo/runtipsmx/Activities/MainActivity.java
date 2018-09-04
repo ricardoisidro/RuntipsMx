@@ -63,25 +63,14 @@ public class MainActivity extends AppCompatActivity{
                 String pass = editTextPass.getText().toString();
 
                 if(checkboxRemember.isChecked())
-                    Session.saveSharedPreferences(prefs, mail, pass);
-                    //saveOnPreferences(mail, pass);
+                    Session.saveSharedPreferences(prefs, mail, pass, "");
+
                 if(validLogin(mail, pass)){
                     openStartActivity();
                 }
             }
         });
     }
-
-    /*private void saveOnPreferences(String mail, String password){
-        if(checkboxRemember.isChecked()){
-            Session.saveSharedPreferences(prefs, mail, password);
-            /*SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("email", mail);
-            editor.putString("pass", password);
-
-            editor.apply();
-        }
-    }*/
 
     private boolean isValidMail(String email){
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.equals("test@test.com");
@@ -106,6 +95,11 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     * getCredentials()
+     * Check if there are stored values (mail and password) in the sharedpreferences, and put
+     * these values on their textboxes.
+     */
     private void getCredentials(){
         String email = Session.getUserMailPrefs(prefs);
         String password = Session.getUserPassPrefs(prefs);
@@ -123,12 +117,4 @@ public class MainActivity extends AppCompatActivity{
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
-    /*private String getUserMailPrefs(){
-        return prefs.getString("email", "");
-    }
-
-    private String getUserPassPrefs(){
-        return prefs.getString("pass", "");
-    }*/
 }
