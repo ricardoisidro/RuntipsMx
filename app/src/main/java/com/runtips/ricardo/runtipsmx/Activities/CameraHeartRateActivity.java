@@ -128,6 +128,7 @@ public class CameraHeartRateActivity extends Activity{
 
     }*/
 
+    @SuppressWarnings("deprecation")
     private static PreviewCallback previewCallback = new PreviewCallback() {
 
         /**
@@ -219,6 +220,7 @@ public class CameraHeartRateActivity extends Activity{
         }
     };
 
+    @SuppressWarnings("deprecation")
     private static SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
@@ -247,6 +249,7 @@ public class CameraHeartRateActivity extends Activity{
         }
     };
 
+    @SuppressWarnings("deprecation")
     private static Camera.Size getSmallestPreviewSize(int width, int height, Camera.Parameters parameters) {
         Camera.Size result = null;
 
@@ -275,7 +278,7 @@ public class CameraHeartRateActivity extends Activity{
     protected void onResume(){
 
         super.onResume();
-        wakeLock.acquire();
+        wakeLock.acquire(10*60*1000L /*10 minutes*/);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
         else

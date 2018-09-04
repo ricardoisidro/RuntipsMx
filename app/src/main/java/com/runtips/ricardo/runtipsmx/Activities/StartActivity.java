@@ -38,13 +38,7 @@ public class StartActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        Intent intent = getIntent();
-        if(intent == null) {
-            tabPosition = 0;
-        } else {
-            tabPosition = intent.getIntExtra("position", 0);
-        }
-
+        openLastTab();
         //getSupportFragmentManager().beginTransaction()
           //      .add()
 
@@ -108,6 +102,15 @@ public class StartActivity extends AppCompatActivity
 
         viewPager.setCurrentItem(tabPosition);
 
+    }
+
+    private void openLastTab() {
+        Intent intent = getIntent();
+        if(intent == null) {
+            tabPosition = 0;
+        } else {
+            tabPosition = intent.getIntExtra("position", 0);
+        }
     }
 
     @Override
