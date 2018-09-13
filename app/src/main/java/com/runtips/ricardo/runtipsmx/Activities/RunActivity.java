@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import com.runtips.ricardo.runtipsmx.Classes.AlternativeChronometer;
 import com.runtips.ricardo.runtipsmx.Classes.GPSStatus;
@@ -40,10 +41,12 @@ import java.util.Timer;
 public class RunActivity extends AppCompatActivity implements TickListener, GpsInformation{
 
     private AlternativeChronometer chrono;
+    private TextView txtSpeed;
+    private TextView txtDistance;
     private Button btnStart;
-    private Button btnStop;
     private Button btnPause;
     private int tabPosition;
+    private boolean isStart;
 
     private GPSStatus gpsStatus = null;
 
@@ -81,45 +84,34 @@ public class RunActivity extends AppCompatActivity implements TickListener, GpsI
 
 
         chrono = findViewById(R.id.altchronometerRun);
+        txtSpeed = findViewById(R.id.txtRunSpeedTime);
+        txtDistance = findViewById(R.id.txtRunDistanceTime);
 
         btnStart = findViewById(R.id.btnRunStart);
-        btnStop = findViewById(R.id.btnRunStop);
         btnPause = findViewById(R.id.btnRunPause);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
+        chrono.setOnChronometerTickListener(new AlternativeChronometer.OnChronometerTickListener() {
             @Override
-            public void onClick(View view) {
-                /*if(tracker.getState() == TrackerState.CONNECTED){
-
-                }*/
-                //gpsStatus.stop();
-
-                chrono.setBase(SystemClock.elapsedRealtime());
-                chrono.start();
-
-
-
-
+            public void onChronometerTick(AlternativeChronometer chronometerChanged) {
+                chrono = chronometerChanged;
             }
         });
 
-        btnPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chrono.setBase(SystemClock.elapsedRealtime());
-            }
-        });
+    }
 
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public void startStopChronometer(View view){
 
-                chrono.stop();
-                chrono.setBase(SystemClock.elapsedRealtime());
-                //gpsStatus.stop();
-            }
-        });
-
+        if(isStart){
+            chrono.stop();
+            isStart=false;
+            ((Button)view).setText(getResources().getString(R.string.btnLabelStart));
+        }
+        else{
+            chrono.setBase(SystemClock.elapsedRealtime());
+            chrono.start();
+            isStart = true;
+            ((Button)view).setText(getResources().getText(R.string.btnLabelStop));
+        }
 
     }
 

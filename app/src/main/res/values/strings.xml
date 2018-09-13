@@ -11,7 +11,7 @@
     <string name="txtRegisterTitle">Datos de registro</string>
     <string name="txtRegisterName">Nombre</string>
     <string name="txtRegisterSurname">Apellidos</string>
-    <string name="txtRegisterBirth">Cumpleaños</string>
+    <string name="txtRegisterBirth">Fecha nacimiento</string>
     <string name="txtRegisterGender">Sexo</string>
     <string name="txtRegisterMan">Hombre</string>
     <string name="txtRegisterWoman">Mujer</string>
@@ -69,17 +69,13 @@
     <string name="txtHeartRateIncorrectTime">Ingresa valor de tiempo</string>
     <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
 
-
-    <string name="btnStartDay1">Lunes</string>
-    <string name="btnStartDay2">Martes</string>
-    <string name="btnStartDay3">Miércoles</string>
-    <string name="btnStartDay4">Jueves</string>
-    <string name="btnStartDay5">Viernes</string>
-    <string name="btnStartDay6">Sábado</string>
-    <string name="btnStartDay7">Domingo</string>
     <string name="btnStartToday">Entrenamiento de hoy</string>
 
     <string name="btnFreeRun">Correr</string>
+
+    <string name="txtRunLabelTime">Tiempo</string>
+    <string name="txtRunLabelDistance">Distancia</string>
+    <string name="txtRunLabelPace">Ritmo</string>
 
     <string name="menuPaquetesEntrenamiento">Paquetes entrenamiento</string>
     <string name="menuContacto">Contacto</string>
@@ -98,9 +94,6 @@
     <string name="nav_header_desc">Nav header desc</string>
     <string name="nav_header_subtitle">Nav header subtitle</string>
 
-
-    <string name="action_settings">Settings</string>
-
     <string name="txtContactText1">Cualquier duda o comentario, por favor contáctame por los siguientes medios:</string>
     <string name="btnContactWhatsapp">WhatsApp</string>
     <string name="btnContactMail">Correo</string>
@@ -113,12 +106,43 @@
     <string name="idFacebook">155134764692651</string>
     <string name="urlInstagram">https://www.instagram.com/runtipsmx/</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="alertGPSTitle">GPS</string>
     <string name="alertGPSMessage">Se requiere permiso de localización, ¿deseas habilitarlo?</string>
     <string name="alertGPSOK">Si</string>
     <string name="alertGPSCancel">No</string>
+
+    <!--<string name="txtSpeedInstructions">Configura tus intervalos</string>
+    <string name="txtSpeedIntervalTime">Tiempo (seg)</string>
+    <string name="txtSpeedIntervalDistance">Distancia (mts)</string>
+    <string name="txtSpeedHintDistance">Tiempo/distancia</string>
+    <string-array name="spinnerSpeedIntervalTimes">
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>180</item>
+        <item>240</item>
+    </string-array>
+    <string-array name="spinnerSpeedIntervalDistances">
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+    </string-array>-->
+
+    <string name="txtSpeedLabelTotalTime">Tiempo total:</string>
+    <string name="txtSpeedLabelTotalDistance">Distancia total:</string>
+    <string name="txtSpeedLabelSuggestedPace">Ritmo sugerido:</string>
+    <string name="txtSpeedWaitingForStart">En espera...</string>
+    <string name="txtSpeedRunning">Intervalo %2$d</string>
+    <string name="txtSpeedResting">Descanso %2$d</string>
+
+    <string name="btnLabelStart">Iniciar</string>
+    <string name="btnLabelPause">Pausa</string>
+    <string name="btnLabelStop">Detener</string>
 
 </resources>

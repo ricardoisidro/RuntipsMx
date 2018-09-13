@@ -2,33 +2,24 @@ package com.runtips.ricardo.runtipsmx.Activities;
 
 import java.util.Calendar;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.runtips.ricardo.runtipsmx.API.API;
 import com.runtips.ricardo.runtipsmx.API.APIServices.RuntipsmxService;
 import com.runtips.ricardo.runtipsmx.Classes.Session;
-import com.runtips.ricardo.runtipsmx.Models.Data;
 import com.runtips.ricardo.runtipsmx.Models.Post;
 import com.runtips.ricardo.runtipsmx.Models.UserResponse;
 import com.runtips.ricardo.runtipsmx.R;
@@ -46,15 +37,15 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     private EditText editTextName;
     private EditText editTextSurname;
     private EditText editTextBirthday;
+    //private TextInputLayout textInputLayoutBirthday;
     private DatePickerDialog dpd;
     private RadioGroup radioGroupGender;
-    private MaterialBetterSpinner spinnerState;
     private EditText editTextPhone;
     private EditText editTextMail;
     private EditText editTextPassword;
-    private EditText editTextPassword2;
+    //private EditText editTextPassword2;
     private TextView txtConditions;
-    private CheckBox checkConditions;
+    //private CheckBox checkConditions;
     private Button btnCancel;
     private Button btnOK;
 
@@ -75,12 +66,12 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         editTextName = findViewById(R.id.txtRegisterName);
         editTextSurname = findViewById(R.id.txtRegisterSurname);
         editTextBirthday = findViewById(R.id.txtRegisterBirth);
+        //textInputLayoutBirthday = findViewById(R.id.textInputLayoutRegisterBirth);
         radioGroupGender = findViewById(R.id.radioGroupRegisterGender);
         editTextPhone = findViewById(R.id.txtRegisterPhone);
-        spinnerState = findViewById(R.id.spinnerRegisterState);
         editTextMail = findViewById(R.id.txtRegisterMail);
         editTextPassword = findViewById(R.id.txtRegisterPassword);
-        editTextPassword2 = findViewById(R.id.txtRegisterConfirmPassword);
+        //editTextPassword2 = findViewById(R.id.txtRegisterConfirmPassword);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line,
@@ -88,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner)
                 findViewById(R.id.spinnerRegisterState);
         materialDesignSpinner.setAdapter(arrayAdapter);
+
 
         editTextBirthday.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -114,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                                     Integer.parseInt(data[0])
                             );
                         }
-                        dpd.setVersion(DatePickerDialog.Version.VERSION_2);
+                        dpd.setVersion(DatePickerDialog.Version.VERSION_1);
                         dpd.show(getFragmentManager(), "Datepickerdialog");
                     }
                     catch(Exception ex){
@@ -124,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
             }
         });
 
-        checkConditions = findViewById(R.id.checkLoginRemember);
+        //checkConditions = findViewById(R.id.checkLoginRemember);
         txtConditions = findViewById(R.id.txtRegisterConditions);
 
         txtConditions.setText(Html.fromHtml(getResources().getText(R.string.txtRegisterConditions) + " <a href='https://www.google.com.mx'>Tap aquí</a>"));
@@ -167,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                             //TODO cachar correctamente la estructura de datos
                             UserResponse userResponse = response.body();
                             Toast.makeText(RegisterActivity.this, String.valueOf(userResponse.getData().getId()) + ", bienvenid@ " +
-                                    userResponse.getData().getName().toString(), Toast.LENGTH_LONG).show();
+                                    userResponse.getData().getName(), Toast.LENGTH_LONG).show();
                             Session.saveSharedPreferences(prefs, mail, pass, name);
                             Intent intent = new Intent(RegisterActivity.this, CameraHeartRateActivity.class);
                             startActivity(intent);
@@ -222,37 +214,5 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         super.onResume();
         DatePickerDialog dpd = (DatePickerDialog) getFragmentManager()
                 .findFragmentByTag("Datepickerdialog");
-    }
-
-    public void generarJson(int opcion, String mail, String celphone, String name, String surname,
-                            String birth, String pass){
-
-        String json;
-        String sex = "";
-        switch (opcion){
-            case R.id.radioRegisterMan:
-                sex = "M";
-                break;
-            case R.id.radioRegisterWoman:
-                sex = "F";
-                break;
-        }
-        json = "{" +
-
-                        "email:" + "\"" + mail + "\", " +
-                        "cel_phone:" + "\"" + celphone + "\", " +
-                        "name:" + "\"" + name + "\", " +
-                        "last_name:" + "\"" + surname + "\", " +
-                        "weight:75, " +
-                        "birth_date:" + "\"" + birth + "\", " +
-                        "sex:" + "\"" + sex + "\", " +
-                        "password:" + "\"" + pass + "\", " +
-                        "password_confirmation:" + "\"" + pass + "\" " +
-                "}";
-
-        Gson gson = new GsonBuilder().create();
-        User user = gson.fromJson(json, User.class);
-        int a = 0;
-
     }
 }

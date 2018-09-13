@@ -1,5 +1,11 @@
 package com.runtips.ricardo.runtipsmx.Classes;
 
+/**
+ * Credits for this class
+ * Antonis Balasas
+ * https://github.com/antoniom/Millisecond-Chronometer
+ */
+
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;

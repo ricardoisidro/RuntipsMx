@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:text="@string/txtStartFreeWelcome"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
     <Button
         android:id="@+id/buttonFreeRun"
