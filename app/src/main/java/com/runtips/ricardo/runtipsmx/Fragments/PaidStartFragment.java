@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.runtips.ricardo.runtipsmx.Activities.RunActivity;
 import com.runtips.ricardo.runtipsmx.Activities.SpeedActivity;
 import com.runtips.ricardo.runtipsmx.Activities.StartActivity;
+import com.runtips.ricardo.runtipsmx.Activities.StrengthActivity;
 import com.runtips.ricardo.runtipsmx.Classes.MyAdapter;
 import com.runtips.ricardo.runtipsmx.Classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
@@ -103,34 +104,32 @@ public class PaidStartFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //Toast.makeText(thisContext, "Clicked: " + principaltrain.get(position), Toast.LENGTH_LONG).show();
+                Intent intent = null;
                 switch (position){
                     case 0:
+                        intent = new Intent(thisContext, StrengthActivity.class);
                         break;
                     case 1:
-                        Intent intent2 = new Intent(thisContext, SpeedActivity.class);
-                        intent2.putExtra("position", 1);
-                        startActivity(intent2);
-                        //getActivity().finish();
+                        intent = new Intent(thisContext, SpeedActivity.class);
                         break;
                     case 2:
-                        Intent intent = new Intent(thisContext, RunActivity.class);
-                        intent.putExtra("position", 1);
-                        startActivity(intent);
-                        //getActivity().finish();
+                        intent = new Intent(thisContext, RunActivity.class);
+                        break;
+                    case 3:
+                        intent = new Intent(thisContext, StrengthActivity.class);
                         break;
                     case 4:
-                        Intent intent3 = new Intent(thisContext, RunActivity.class);
-                        intent3.putExtra("position", 1);
-                        startActivity(intent3);
-                        //getActivity().finish();
+                        intent = new Intent(thisContext, RunActivity.class);
                         break;
                     case 5:
-                        Intent intent4 = new Intent(thisContext, SpeedActivity.class);
-                        intent4.putExtra("position", 1);
-                        startActivity(intent4);
-                        //getActivity().finish();
+                        intent = new Intent(thisContext, SpeedActivity.class);
+                        break;
+                    case 6:
                         break;
                 }
+                intent.putExtra("position", 1);
+                startActivity(intent);
+
             }
         });
 

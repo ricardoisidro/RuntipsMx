@@ -12,6 +12,7 @@
     <string name="txtRegisterName">Nombre</string>
     <string name="txtRegisterSurname">Apellidos</string>
     <string name="txtRegisterBirth">Fecha nacimiento</string>
+    <string name="txtBirthHint"><i>yyyy-mm-dd</i></string>
     <string name="txtRegisterGender">Sexo</string>
     <string name="txtRegisterMan">Hombre</string>
     <string name="txtRegisterWoman">Mujer</string>
@@ -61,13 +62,17 @@
     <string name="txtHeartRateTitle">Finalizar test físico</string>
     <string name="txtHeartRateInstructions">Para finalizar el test, cubre la cámara
         con tu dedo indice durante 20 segundos e ingresa el tiempo que realizaste en el test</string>
+    <string name="txtHeartRateInsertWeight">Peso (kg)</string>
     <string name="txtHeartRateInsertTime">Tiempo realizado en el test</string>
     <string name="txtHeartRateMessage1">Pulso: </string>
     <string name="txtHeartRateMessage2"> BPM</string>
     <string name="txtHeartRateContinue">Enviar resultados</string>
+    <string name="txtHeartRateBack">Ver instrucciones</string>
     <string name="txtHeartRateIncorrectMeasure">Reintenta medir tu pulso</string>
     <string name="txtHeartRateIncorrectTime">Ingresa valor de tiempo</string>
-    <string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>
+    <!--<string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>-->
+    <string name="urlTestFisico">https://www.youtube.com/embed/0neVuGOg6NY</string>
+    <string name="urlTestFisicoId">0neVuGOg6NY</string>
 
     <string name="btnStartToday">Entrenamiento de hoy</string>
 
@@ -78,6 +83,7 @@
     <string name="txtRunLabelPace">Ritmo</string>
 
     <string name="menuPaquetesEntrenamiento">Paquetes entrenamiento</string>
+    <string name="menuTestFisico">Realizar test físico</string>
     <string name="menuContacto">Contacto</string>
     <string name="menuDatos">Datos personales</string>
     <string name="menuCerrarSesion">Cerrar sesión</string>
@@ -86,15 +92,17 @@
     <string name="txtTab02">Plan semanal</string>
 
     <string name="txtStartPaidWelcome">Hola %1$s, aquí tienes el entrenamiento de esta semana.</string>
-    <string name="txtStartFreeWelcome">Hola %1$s, puedes utilizar las siguientes herramientas. Si deseas
-        un entrenamiento personalizado, utiliza los medios de contacto para realizar tu pago.</string>
+    <string name="txtStartFreeWelcome">Hola %1$s, puedes utilizar las siguientes herramientas.
+        Si deseas un entrenamiento personalizado, utiliza los medios de contacto para realizar
+        tu pago.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Nav header desc</string>
     <string name="nav_header_subtitle">Nav header subtitle</string>
 
-    <string name="txtContactText1">Cualquier duda o comentario, por favor contáctame por los siguientes medios:</string>
+    <string name="txtContactText1">Cualquier duda o comentario, por favor contáctame por los
+        siguientes medios:</string>
     <string name="btnContactWhatsapp">WhatsApp</string>
     <string name="btnContactMail">Correo</string>
     <string name="txtContactText2">Siguenos también en nuestras redes sociales</string>
@@ -144,5 +152,12 @@
     <string name="btnLabelStart">Iniciar</string>
     <string name="btnLabelPause">Pausa</string>
     <string name="btnLabelStop">Detener</string>
+
+    <string name="txtPlansLabelTitle">Planes de entrenamiento</string>
+    <string name="txtPlansLabelAnnouncement">%1$s, en <b>RuntipsMx</b> tenemos diferentes
+        paquetes. Elige aquel que se ajusta mejor a tus necesidades:</string>
+    <string name="txtPlansSubtitleOnline">Online</string>
+    <string name="txtPlansTextOnline"></string>
+
 
 </resources>

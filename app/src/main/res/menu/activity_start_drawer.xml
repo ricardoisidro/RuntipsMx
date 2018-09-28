@@ -12,6 +12,9 @@
             android:id="@+id/navDatosUsuario"
             android:title="@string/menuDatos" />
         <item
+            android:id="@+id/navTestFisico"
+            android:title="@string/menuTestFisico"/>
+        <item
             android:id="@+id/navContacto"
             android:title="@string/menuContacto" />
         <item

@@ -23,6 +23,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait">
@@ -33,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Presentacion01Activity"
+            android:name=".Activities.Presentacion01Activity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.StartActivity"
@@ -61,7 +62,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.StartActivity" />
         </activity>
-        <activity android:name=".Activities.SpeedActivity"
+        <activity
+            android:name=".Activities.SpeedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar">
             <meta-data
@@ -70,6 +72,16 @@
         </activity>
 
         <service android:name=".Services.Tracker" />
+
+        <activity
+            android:name=".Activities.PlansActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.StartActivity" />
+        </activity>
+        <activity android:name=".Activities.StrengthActivity"></activity>
     </application>
 
 </manifest>

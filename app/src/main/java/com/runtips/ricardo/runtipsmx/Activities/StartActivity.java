@@ -3,6 +3,7 @@ package com.runtips.ricardo.runtipsmx.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -77,14 +78,24 @@ public class StartActivity extends AppCompatActivity
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         setSupportActionBar(toolbar);
-        FloatingActionButton roundedButton = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton contactButton = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton helpButton = findViewById(R.id.fabHelp);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        roundedButton.setOnClickListener(new View.OnClickListener() {
+        contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openContactActivity();
+            }
+        });
+
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(invokeWhatsapp()!= null){
+                    startActivity(invokeWhatsapp());
+                }
             }
         });
 
@@ -98,7 +109,7 @@ public class StartActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         txtUsuario = headerView.findViewById(R.id.txtMenuUserName);
 
-        getUsername();
+        putUsernameinMenuBar();
 
         viewPager.setCurrentItem(tabPosition);
 
@@ -155,6 +166,7 @@ public class StartActivity extends AppCompatActivity
             Toast.makeText(StartActivity.this, R.string.btnStartToday, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.navPaquetes) {
             Toast.makeText(StartActivity.this, R.string.menuPaquetesEntrenamiento, Toast.LENGTH_SHORT).show();
+            openPlansActivity();
         } else if (id == R.id.navDatosUsuario) {
             Toast.makeText(StartActivity.this, R.string.menuDatos, Toast.LENGTH_SHORT).show();
             logOut();
@@ -182,20 +194,32 @@ public class StartActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    /*private void clearPrefs(){
-        prefs.edit().clear().apply();
-    }*/
+    private void openPlansActivity(){
+        Intent intent = new Intent(StartActivity.this, PlansActivity.class);
+        startActivity(intent);
+    }
 
-    private void getUsername(){
+    private void putUsernameinMenuBar(){
         String user = Session.getUserNamePrefs(prefs);
         if(!TextUtils.isEmpty(user))
             txtUsuario.setText("Hola: " + user);
     }
 
-    /*private String getUserUserPrefs(){
-        return prefs.getString("email", "");
-    }*/
-
-
+    public Intent invokeWhatsapp(){
+        String phoneNumber = getResources().getString(R.string.numberWhatsapp);
+        Uri uri = Uri.parse("smsto:+" + phoneNumber);
+        //String text = "Hola desde la app";
+        try{
+            Intent whatsIntent = new Intent(Intent.ACTION_SENDTO, uri);
+            //whatsIntent.setType("text/plain");
+            //whatsIntent.putExtra(Intent.EXTRA_TEXT, text);
+            whatsIntent.setPackage("com.whatsapp");
+            return whatsIntent;
+        }
+        catch (Exception ex){
+            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+    }
 
 }

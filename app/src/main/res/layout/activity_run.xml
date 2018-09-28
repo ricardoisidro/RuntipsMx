@@ -5,6 +5,9 @@
     android:id="@+id/runActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/paddingTop"
+    android:paddingRight="@dimen/paddingRight"
+    android:paddingLeft="@dimen/paddingLeft"
     android:background="@color/colorPrimaryLight"
     tools:context=".Activities.RunActivity"
     tools:layout_editor_absoluteY="81dp">
@@ -25,14 +28,11 @@
         app:layout_constraintTop_toBottomOf="@+id/txtRunLabelTime" />
 
 
-
-
     <TextView
         android:id="@+id/txtRunDistanceTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
         android:text="0.00 km"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -45,7 +45,6 @@
         android:id="@+id/txtRunSpeedTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="0.00 min/km"
@@ -61,7 +60,6 @@
         android:id="@+id/txtRunLabelTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/txtRunLabelTime"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +71,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/txtRunLabelDistance"
         android:textAlignment="center"
@@ -85,8 +82,7 @@
         android:id="@+id/txtRunLabelPace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="@string/txtRunLabelPace"
         android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtRunLabeDistance"
@@ -98,14 +94,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="194dp" />
+        app:layout_constraintGuide_end="175dp" />
 
     <Button
         android:id="@+id/btnRunStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
         android:onClick="startStopChronometer"
         android:text="@string/btnLabelStart"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -117,8 +111,6 @@
         android:id="@+id/btnRunPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/btnLabelPause"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

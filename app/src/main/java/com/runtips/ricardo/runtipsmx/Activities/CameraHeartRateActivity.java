@@ -31,7 +31,6 @@ public class CameraHeartRateActivity extends Activity{
 
     SurfaceHolder SurfaceHolder;
 
-
     private static int averageIndex = 0;
     private static final int averageArraySize = 4;
     private static final int[] averageArray = new int[averageArraySize];
@@ -54,6 +53,7 @@ public class CameraHeartRateActivity extends Activity{
     private static Camera camera = null;
 
     private Button btnCheck;
+    private Button btnBack;
     private static TextView txtCheck;
     private static EditText editTextTime;
 
@@ -74,7 +74,6 @@ public class CameraHeartRateActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_camera_heart_rate);
 
         preview = findViewById(R.id.preview);
@@ -94,6 +93,16 @@ public class CameraHeartRateActivity extends Activity{
         }
 
         btnCheck = findViewById(R.id.btnHeartRateOK);
+        btnBack = findViewById(R.id.btnHeartRateBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CameraHeartRateActivity.this, Presentacion01Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
