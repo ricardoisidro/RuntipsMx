@@ -8,8 +8,8 @@
     android:paddingTop="@dimen/paddingTop"
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
-    android:background="@color/colorPrimaryLight"
-    tools:context=".Activities.ContactActivity">
+    android:background="@drawable/background02"
+    tools:context=".activities.ContactActivity">
 
     <ImageView
         android:id="@+id/imgContact"

@@ -5,10 +5,10 @@
     android:id="@+id/paidStartLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/background02"
     android:orientation="vertical"
     android:paddingTop="@dimen/paddingTop"
-    tools:context=".Fragments.PaidStartFragment"
+    tools:context=".fragments.PaidStartFragment"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView

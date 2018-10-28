@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/paddingLeft"
+    android:paddingEnd="@dimen/paddingRight"
+    android:paddingTop="@dimen/paddingTop"
+    android:paddingBottom="@dimen/paddingBottom"
+    android:background="@drawable/pop_bg">
+    <TextView
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:text="@string/txtTermsTitle"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="@string/termsText"/>
+    </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:text="@string/txtPrivacy"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="@string/privacytext"/>
+    </ScrollView>
+</LinearLayout>

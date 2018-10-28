@@ -4,7 +4,8 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.runtips.ricardo.runtipsmx"
-        minSdkVersion 18
+        minSdkVersion 21
+        //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -31,7 +32,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.github.johnpersano:supertoasts:2.0'
-    implementation 'com.google.android.gms:play-services-auth:16.0.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
     implementation 'pub.devrel:easypermissions:0.3.0'
     implementation('com.google.api-client:google-api-client-android:1.25.0') {
         exclude group: 'org.apache.httpcomponents'

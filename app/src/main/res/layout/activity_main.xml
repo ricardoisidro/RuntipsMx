@@ -7,8 +7,8 @@
     android:paddingTop="@dimen/paddingTop"
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
-    android:background="@color/colorPrimaryLight"
-    tools:context="com.runtips.ricardo.runtipsmx.Activities.MainActivity"
+    android:background="@drawable/background01"
+    tools:context="com.runtips.ricardo.runtipsmx.activities.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
@@ -107,7 +107,6 @@
         android:id="@+id/txtLoginRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtLoginRegistro"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"

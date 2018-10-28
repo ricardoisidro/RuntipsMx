@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/background02"
     android:padding="16dp"
-    tools:context=".Fragments.FreeStartFragment">
+    tools:context=".fragments.FreeStartFragment">
 
     <ImageView
         android:id="@+id/imgFreeStart01"

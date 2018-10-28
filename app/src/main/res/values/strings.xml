@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">RuntipsMx</string>
     <string name="txtLoginEntrar">Entrar</string>
-    <string name="txtLoginRegistro">¿Eres nuevo? Registrate</string>
+    <string name="txtLoginRegistro">¿Eres nuevo? Regístrate</string>
     <string name="txtLoginLabelUsuario">Correo electrónico</string>
     <string name="txtLoginLabelPassword">Password</string>
     <string name="txtLoginRemember">Recordar datos de usuario</string>
@@ -58,6 +58,14 @@
     <string name="txtRegisterConditions">Acepto términos y condiciones</string>
     <string name="btnRegisterCancel">Cancelar</string>
     <string name="btnRegisterOK">Continuar</string>
+
+    <string name="msgRegisterError">Error en el formulario. Verifique sus datos</string>
+    <string name="msgRegisterUnlegibleError">Error desconocido</string>
+    <string name="msgRegisterMailTaken">Correo ya existente. Utilice otro</string>
+    <string name="msgRegisterAcceptTerms">Debes aceptar los términos y condiciones para continuar.</string>
+
+    <string name="txtTermsTitle">Términos y condiciones</string>
+    <string name="txtPrivacy">Aviso de privacidad</string>
 
     <string name="txtHeartRateTitle">Finalizar test físico</string>
     <string name="txtHeartRateInstructions">Para finalizar el test, cubre la cámara

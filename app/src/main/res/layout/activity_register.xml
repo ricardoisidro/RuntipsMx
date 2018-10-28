@@ -8,8 +8,8 @@
     android:paddingTop="@dimen/paddingTop"
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
-    android:background="@color/colorPrimaryLight"
-    tools:context=".Activities.RegisterActivity">
+    android:background="@drawable/background01"
+    tools:context=".activities.RegisterActivity">
 
     <TextView
         android:id="@+id/txtRegisterTitle"
@@ -36,13 +36,13 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/txtRegisterName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="9"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterSurname"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -53,17 +53,18 @@
         android:layout_marginTop="16dp"
         android:hint="@string/txtRegisterSurname"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintTop_toBottomOf="@+id/txtRegisterTitle">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/txtRegisterSurname"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="11"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:nextFocusDown="@id/textRegisterBirth"
-            android:textSize="16dp" />
+            android:textSize="16sp"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -76,34 +77,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegisterName">
 
-        <!--<android.support.design.widget.TextInputEditText
-            android:id="@+id/txtRegisterBirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textSize="16dp" />-->
         <EditText
             android:id="@+id/textRegisterBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="8"
             android:inputType="date"
-            android:text="@string/txtBirthHint" />
+            android:hint="@string/txtBirthHint" />
 
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
         android:id="@+id/btnRegisterCalendar"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@+id/radioGroupRegisterGender"
         app:layout_constraintStart_toEndOf="@+id/textInputLayoutRegisterBirth"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegisterSurname"
-        app:srcCompat="@android:drawable/ic_menu_month" />
+        app:srcCompat="@drawable/ic_calendar"
+        tools:ignore="ContentDescription" />
 
     <RadioGroup
         android:id="@+id/radioGroupRegisterGender"
@@ -120,7 +114,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/txtRegisterMan"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/radioRegisterWoman"
@@ -128,7 +122,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/txtRegisterWoman"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
     </RadioGroup>
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -139,7 +133,7 @@
         android:layout_marginTop="16dp"
         android:hint="@string/txtRegisterState"
         android:nextFocusDown="@id/txtRegisterPhone"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutPhone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegisterBirth"
@@ -147,7 +141,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayoutPhone"
-        android:layout_width="174dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/txtRegisterPhone"
@@ -158,11 +152,11 @@
             android:id="@+id/txtRegisterPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="9"
             android:inputType="phone"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterMail"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -184,7 +178,7 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterPassword"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -198,17 +192,18 @@
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutRegisterConfirmPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegisterMail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:layout_constraintHorizontal_weight="1">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/txtRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="9"
             android:inputType="textPassword"
             android:maxLines="1"
             android:nextFocusDown="@id/txtRegisterConfirmPassword"
-            android:textSize="16dp" />
+            android:textSize="16sp"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -220,17 +215,18 @@
         android:hint="@string/txtRegisterConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegisterMail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:layout_constraintHorizontal_weight="1">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/txtRegisterConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="11"
             android:inputType="textPassword"
             android:maxLines="1"
             android:nextFocusDown="@id/checkRegisterConditions"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -274,8 +270,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnRegisterCancel" />
-
-
-
 
 </android.support.constraint.ConstraintLayout>

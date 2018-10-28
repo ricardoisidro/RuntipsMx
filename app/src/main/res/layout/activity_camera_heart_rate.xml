@@ -5,11 +5,11 @@
     android:id="@+id/heartRateLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/background01"
     android:paddingTop="@dimen/paddingTop"
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
-    tools:context=".Activities.CameraHeartRateActivity"
+    tools:context=".activities.CameraHeartRateActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView

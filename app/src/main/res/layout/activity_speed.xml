@@ -5,11 +5,11 @@
     android:id="@+id/speedActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/background02"
     android:paddingTop="@dimen/paddingTop"
     android:paddingRight="@dimen/paddingRight"
     android:paddingLeft="@dimen/paddingLeft"
-    tools:context=".Activities.SpeedActivity"
+    tools:context=".activities.SpeedActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.runtips.ricardo.runtipsmx.Classes.AlternativeChronometer
+    <com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer
         android:id="@+id/chronoSpeedCurrent"
         android:layout_width="fill_parent"
         android:layout_height="64dp"
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSpeedLabelSuggestedPace" />
 
-    <com.runtips.ricardo.runtipsmx.Classes.AlternativeChronometer
+    <com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer
         android:id="@+id/chronoTotalTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
