@@ -1,6 +1,7 @@
 package com.runtips.ricardo.runtipsmx.activities;
 
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -105,17 +106,17 @@ public class ContactActivity extends AppCompatActivity {
 
     public Intent invokeWhatsapp(){
         String phoneNumber = getResources().getString(R.string.numberWhatsapp);
-        Uri uri = Uri.parse("smsto:+" + phoneNumber);
-        //String text = "Hola desde la app";
         try{
-            Intent whatsIntent = new Intent(Intent.ACTION_SENDTO, uri);
-           //whatsIntent.setType("text/plain");
-            //whatsIntent.putExtra(Intent.EXTRA_TEXT, text);
-            whatsIntent.setPackage("com.whatsapp");
-            return whatsIntent;
+            Intent whatsappIntent = new Intent();
+            whatsappIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+            whatsappIntent.setAction(Intent.ACTION_SEND);
+            whatsappIntent.setType("text/plain");
+            whatsappIntent.setPackage("com.whatsapp");
+            whatsappIntent.putExtra("jid", phoneNumber +"@s.whatsapp.net");
+            return whatsappIntent;
         }
         catch (Exception ex){
-            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo" + ex.toString(), Toast.LENGTH_SHORT).show();
             return null;
         }
     }

@@ -17,9 +17,7 @@ public class PlansActivity extends AppCompatActivity {
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         }
-
         savePreviousTab();
 
     }

@@ -59,7 +59,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CameraHeartRateActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+
+        </activity>
         <activity
             android:name=".activities.RunActivity"
             android:screenOrientation="portrait"
@@ -78,8 +80,6 @@
                 android:value=".activities.StartActivity" />
         </activity>
 
-        <service android:name=".services.Tracker" />
-
         <service android:name=".activities.LocationService">
             <meta-data
                 android:name="com.google.android.gms.version"
@@ -97,6 +97,13 @@
         <activity
             android:name=".activities.StrengthActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activities.InfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.StartActivity" />
+        </activity>
     </application>
 
 </manifest>

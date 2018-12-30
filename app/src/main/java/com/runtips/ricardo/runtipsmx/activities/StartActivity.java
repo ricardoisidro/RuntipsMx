@@ -1,5 +1,6 @@
 package com.runtips.ricardo.runtipsmx.activities;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -159,18 +160,13 @@ public class StartActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.navToday) {
-            Toast.makeText(StartActivity.this, R.string.btnStartToday, Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.navPaquetes) {
-            Toast.makeText(StartActivity.this, R.string.menuPaquetesEntrenamiento, Toast.LENGTH_SHORT).show();
+        if (id == R.id.navPaquetes) {
             openPlansActivity();
         } else if (id == R.id.navDatosUsuario) {
-            Toast.makeText(StartActivity.this, R.string.menuDatos, Toast.LENGTH_SHORT).show();
-            logOut();
+            openInfoActivity();
         } else if (id == R.id.navContacto) {
             openContactActivity();
         } else if (id == R.id.navCerrarSesion) {
-            Toast.makeText(StartActivity.this, R.string.menuCerrarSesion, Toast.LENGTH_SHORT).show();
             Session.removeSharedPreferences(prefs);
             logOut();
         }
@@ -196,6 +192,11 @@ public class StartActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    private void openInfoActivity(){
+        Intent intent = new Intent(StartActivity.this, InfoActivity.class);
+        startActivity(intent);
+    }
+
     private void putUsernameinMenuBar(){
         String user = Session.getUserNamePrefs(prefs);
         if(!TextUtils.isEmpty(user))
@@ -204,17 +205,17 @@ public class StartActivity extends AppCompatActivity
 
     public Intent invokeWhatsapp(){
         String phoneNumber = getResources().getString(R.string.numberWhatsapp);
-        Uri uri = Uri.parse("smsto:+" + phoneNumber);
-        //String text = "Hola desde la app";
         try{
-            Intent whatsIntent = new Intent(Intent.ACTION_SENDTO, uri);
-            //whatsIntent.setType("text/plain");
-            //whatsIntent.putExtra(Intent.EXTRA_TEXT, text);
-            whatsIntent.setPackage("com.whatsapp");
-            return whatsIntent;
+            Intent whatsappIntent = new Intent();
+            whatsappIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+            whatsappIntent.setAction(Intent.ACTION_SEND);
+            whatsappIntent.setType("text/plain");
+            whatsappIntent.setPackage("com.whatsapp");
+            whatsappIntent.putExtra("jid", phoneNumber +"@s.whatsapp.net");
+            return whatsappIntent;
         }
         catch (Exception ex){
-            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se requiere WhatsApp instalado en el dispositivo" + ex.toString(), Toast.LENGTH_SHORT).show();
             return null;
         }
     }

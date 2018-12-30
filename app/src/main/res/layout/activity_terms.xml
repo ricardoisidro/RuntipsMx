@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/paddingTop"
     android:paddingBottom="@dimen/paddingBottom"
     android:background="@drawable/pop_bg">
+
     <TextView
         android:layout_width="match_parent"
         android:textAlignment="center"
@@ -29,6 +30,7 @@
             android:textAlignment="center"
             android:text="@string/termsText"/>
     </ScrollView>
+
     <TextView
         android:layout_width="match_parent"
         android:textAlignment="center"

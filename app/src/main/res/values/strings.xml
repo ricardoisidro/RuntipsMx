@@ -127,6 +127,34 @@
     <string name="alertGPSOK">Si</string>
     <string name="alertGPSCancel">No</string>
 
+    <string name="txtTrainingPack1">Online</string>
+    <string name="txtOnlinePack01">\u2022 Entrenamiento personalizado.</string>
+    <string name="txtOnlinePack02">\u2022 Acceso a videos de fortalecimiento muscular.</string>
+    <string name="txtOnlinePack03">\u2022 Test físico de diagnóstico y seguimiento.</string>
+    <string name="txtOnlinePack04">\u2022 Seguimiento personalizado. </string>
+    <string name="txtOnlinePackFee">COSTO: $160.00 MXN mensual</string>
+
+    <string name="txtTrainingPack2">Presencial</string>
+    <string name="txtLivePack01">\u2022 Entrenamiento personalizado complementadas con <b>sesiones presenciales.</b></string>
+    <string name="txtLivePack02">\u2022 Acceso a videos de fortalecimiento muscular.</string>
+    <string name="txtLivePack03">\u2022 Test físico de diagnóstico y seguimiento.</string>
+    <string name="txtLivePack04">\u2022 Seguimiento personalizado.</string>
+    <string name="txtLivePack05">\u2022 <b>Descuento en servicios como nutrición, médicos y masajes.</b></string>
+    <string name="txtLivePackFee">COSTO: $390.00 MXN mensual</string>
+    <string name="txtLivePack06">* Disponible sólo en la Ciudad de México.</string>
+
+    <string name="txtTrainingPack3">Premium</string>
+    <string name="txtPremiumPack01">\u2022 Entrenamiento, running y gym personalizado.</string>
+    <string name="txtPremiumPack02">\u2022 Sesiones de entrenamiento en el lugar de tu preferencia</string>
+    <string name="txtPremiumPack03">\u2022 Evaluación física de diagnóstico y seguimiento</string>
+    <string name="txtPremiumPack04">\u2022 Seguimiento personalizado</string>
+    <string name="txtPremiumPackFee">COSTO: Contáctame para solicitar cotización</string>
+
+    <string name="txtTrainingPack4">Empresarial</string>
+    <string name="txtEnterprisePack01">\u2022 Evaluaciones físicas y nutrimentales.</string>
+    <string name="txtEnterprisePack02">\u2022 Elaboramos programas para tus colaboradores acorde a sus necesiades</string>
+    <string name="txtEnterprisePackFee">COSTO: Contáctame para solicitar cotización</string>
+
     <!--<string name="txtSpeedInstructions">Configura tus intervalos</string>
     <string name="txtSpeedIntervalTime">Tiempo (seg)</string>
     <string name="txtSpeedIntervalDistance">Distancia (mts)</string>

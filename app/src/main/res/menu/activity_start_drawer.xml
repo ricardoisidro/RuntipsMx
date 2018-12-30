@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
         <item
-            android:id="@+id/navToday"
-            android:title="@string/btnStartToday" />
-        <item
             android:id="@+id/navPaquetes"
             android:title="@string/menuPaquetesEntrenamiento" />
         <item

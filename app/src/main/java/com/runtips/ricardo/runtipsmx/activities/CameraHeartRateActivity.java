@@ -12,6 +12,7 @@ import android.os.PowerManager.WakeLock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -71,6 +72,19 @@ public class CameraHeartRateActivity extends Activity{
     //private static double beats = 0;
     //private static long startTime = 0;
 
+    /**
+     * "For anyone interested, I figured out how to detect whether the user has his finger
+     * placed on the camera or not. In the imageProcessing.java, in the decodeYUV420SPtoRedAvg()
+     * method, we calculate the average value of the pixels of the red color. DOing a small
+     * experiment, I found out that when the user has his finger placed on the camera lens,
+     * the average has a value of >200 . In other case, the average value is <200.
+     * thus, in the HeartRateActivity you can add an if statement after the call of the
+     * decodeYUV420SPtoRedAvg(), to find wether the value returned is >200 or < 199. You can
+     * use this to display an alert box or something similar to guide the user to place his
+     * finger on the camera lens."
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,7 +170,7 @@ public class CameraHeartRateActivity extends Activity{
             String message = "";
 
             int imgAvg = ImageProcessing.decodeYUV420SPtoRedAvg(data.clone(), height, width);
-            // Log.i(TAG, "imgAvg="+imgAvg);
+            Log.i("*** CameraimgAvg *** = ", "imgAvg="+imgAvg);
             if (imgAvg == 0 || imgAvg == 255) {
                 processing.set(false);
                 return;
@@ -287,7 +301,7 @@ public class CameraHeartRateActivity extends Activity{
     protected void onResume(){
 
         super.onResume();
-        wakeLock.acquire(10*60*1000L /*10 minutes*/);
+        wakeLock.acquire(10*60*1000L /*5 minutes*/);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
         else

@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/runtipslogo"
+        app:srcCompat="@drawable/runtipslogo2"
         tools:ignore="ContentDescription" />
 
     <android.support.design.widget.TextInputLayout
