@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -21,6 +20,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.runtips.ricardo.runtipsmx.activities.ContactActivity;
+import com.runtips.ricardo.runtipsmx.activities.InfoActivity;
+import com.runtips.ricardo.runtipsmx.activities.MainActivity;
+import com.runtips.ricardo.runtipsmx.activities.PlansActivity;
 import com.runtips.ricardo.runtipsmx.classes.PagerAdapter;
 import com.runtips.ricardo.runtipsmx.classes.Session;
 import com.runtips.ricardo.runtipsmx.R;

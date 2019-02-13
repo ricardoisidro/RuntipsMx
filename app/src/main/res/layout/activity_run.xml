@@ -9,10 +9,10 @@
     android:paddingRight="@dimen/paddingRight"
     android:paddingLeft="@dimen/paddingLeft"
     android:background="@drawable/background02"
-    tools:context=".activities.RunActivity"
+    tools:context=".defaultversion.activities.RunActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer
+    <com.runtips.ricardo.runtipsmx.defaultversion.classes.AlternativeChronometer
         android:id="@+id/altchronometerRun"
         android:layout_width="fill_parent"
         android:layout_height="64dp"

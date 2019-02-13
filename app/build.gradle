@@ -1,10 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.runtips.ricardo.runtipsmx"
-        minSdkVersion 21
+        minSdkVersion 26
         //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
@@ -18,8 +19,9 @@ android {
         }
     }
     productFlavors {
+
     }
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {

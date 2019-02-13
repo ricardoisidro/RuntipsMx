@@ -17,6 +17,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.runtips.ricardo.runtipsmx.activities.SpeedActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -90,7 +91,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
 
     @Override
     public void onLocationChanged(Location location) {
-        SpeedActivity.progressDialog.dismiss();
+        com.runtips.ricardo.runtipsmx.activities.SpeedActivity.progressDialog.dismiss();
 
         currentLocation = location;
         if(locationStart == null){
@@ -141,10 +142,10 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     private void updateUI() {
-        if(SpeedActivity.p == 0) {
+        if(com.runtips.ricardo.runtipsmx.activities.SpeedActivity.p == 0) {
             distance = distance + (locationStart.distanceTo(locationEnd)/1000.00);
-            SpeedActivity.endTime = System.currentTimeMillis();
-            long diff = SpeedActivity.endTime - SpeedActivity.startTime;
+            com.runtips.ricardo.runtipsmx.activities.SpeedActivity.endTime = System.currentTimeMillis();
+            long diff = com.runtips.ricardo.runtipsmx.activities.SpeedActivity.endTime - SpeedActivity.startTime;
             diff = TimeUnit.MILLISECONDS.toMinutes(diff);
 
             //SpeedActivity.time.setText("Total time: " + diff + " minutes");

@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.runtips.ricardo.runtipsmx.activities.LocationService;
 import com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer;
 import com.runtips.ricardo.runtipsmx.R;
 

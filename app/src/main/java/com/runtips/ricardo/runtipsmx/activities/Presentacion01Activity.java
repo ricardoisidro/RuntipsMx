@@ -9,6 +9,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.runtips.ricardo.runtipsmx.activities.CameraHeartRateActivity;
 import com.runtips.ricardo.runtipsmx.classes.PlayerConfig;
 import com.runtips.ricardo.runtipsmx.R;
 

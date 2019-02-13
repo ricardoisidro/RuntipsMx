@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/paddingTop"
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
-    tools:context=".activities.CameraHeartRateActivity"
+    tools:context=".defaultversion.activities.CameraHeartRateActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView

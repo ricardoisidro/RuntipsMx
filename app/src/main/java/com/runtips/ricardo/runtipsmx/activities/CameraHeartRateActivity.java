@@ -23,6 +23,8 @@ import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.widget.Toast;
 
+import com.runtips.ricardo.runtipsmx.activities.Presentacion01Activity;
+import com.runtips.ricardo.runtipsmx.activities.StartActivity;
 import com.runtips.ricardo.runtipsmx.classes.ImageProcessing;
 import com.runtips.ricardo.runtipsmx.R;
 
@@ -100,7 +102,7 @@ public class CameraHeartRateActivity extends Activity{
         editTextTime = findViewById(R.id.editHeartRateTime);
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Screen");
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "runtipsmx:screenwakelock");
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},0);

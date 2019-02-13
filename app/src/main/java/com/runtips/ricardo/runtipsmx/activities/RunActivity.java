@@ -1,14 +1,9 @@
 package com.runtips.ricardo.runtipsmx.activities;
 
 import android.Manifest;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.location.Location;
-import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -20,11 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.runtips.ricardo.runtipsmx.activities.StartActivity;
 import com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer;
 import com.runtips.ricardo.runtipsmx.db.DBHelper;
 import com.runtips.ricardo.runtipsmx.R;
 
-import java.util.HashMap;
 import java.util.Timer;
 
 public class RunActivity extends AppCompatActivity{

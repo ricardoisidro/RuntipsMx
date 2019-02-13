@@ -9,7 +9,7 @@
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
     android:background="@drawable/background02"
-    tools:context=".activities.ContactActivity">
+    tools:context=".defaultversion.activities.ContactActivity">
 
     <ImageView
         android:id="@+id/imgContact"

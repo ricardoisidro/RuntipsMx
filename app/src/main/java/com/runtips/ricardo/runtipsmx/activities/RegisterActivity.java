@@ -1,6 +1,5 @@
 package com.runtips.ricardo.runtipsmx.activities;
 
-import java.io.IOException;
 import java.util.Calendar;
 
 import android.Manifest;
@@ -29,13 +28,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.runtips.ricardo.runtipsmx.api.API;
+import com.runtips.ricardo.runtipsmx.activities.MainActivity;
+import com.runtips.ricardo.runtipsmx.activities.TermsConditions;
+import com.runtips.ricardo.runtipsmx.activities.VideoActivity;
 import com.runtips.ricardo.runtipsmx.api.apiservices.RuntipsmxService;
-import com.runtips.ricardo.runtipsmx.classes.Session;
-import com.runtips.ricardo.runtipsmx.models.PostRegister;
-import com.runtips.ricardo.runtipsmx.models.UserRegister;
 import com.runtips.ricardo.runtipsmx.models.UserRegisterResponse;
 import com.runtips.ricardo.runtipsmx.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -184,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity {
         });*/
 
         btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
+            /*@Override
             public void onClick(View view) {
                 if (checkConditions.isChecked()) {
 
@@ -268,7 +265,13 @@ public class RegisterActivity extends AppCompatActivity {
                 else {
                 Toast.makeText(RegisterActivity.this, getResources().getString(R.string.msgRegisterAcceptTerms),Toast.LENGTH_LONG).show();
             }
+            }*/
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, VideoActivity.class);
+                startActivity(intent);
             }
+
         });
 
         btnCancel = findViewById(R.id.btnRegisterCancel);
@@ -281,6 +284,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     private void function(){

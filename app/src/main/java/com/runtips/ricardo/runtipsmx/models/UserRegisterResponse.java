@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.runtips.ricardo.runtipsmx.models.DataRegisterResponse;
 
 /**
  * UserRegisterResponse.java
@@ -17,20 +18,20 @@ public class UserRegisterResponse {
 
     @SerializedName("data")
     @Expose
-    private DataRegisterResponse data;
+    private com.runtips.ricardo.runtipsmx.models.DataRegisterResponse data;
 
-    public DataRegisterResponse getDataRegisterResponse() {
+    public com.runtips.ricardo.runtipsmx.models.DataRegisterResponse getDataRegisterResponse() {
         return data;
     }
 
-    public void setDataRegisterResponse(DataRegisterResponse data) {
+    public void setDataRegisterResponse(com.runtips.ricardo.runtipsmx.models.DataRegisterResponse data) {
 
         this.data = data;
     }
 
-    public static DataRegisterResponse parseJSON(String response){
+    public static com.runtips.ricardo.runtipsmx.models.DataRegisterResponse parseJSON(String response){
         Gson gson = new GsonBuilder().create();
-        DataRegisterResponse data = gson.fromJson(response, DataRegisterResponse.class);
+        com.runtips.ricardo.runtipsmx.models.DataRegisterResponse data = gson.fromJson(response, DataRegisterResponse.class);
         return data;
     }
 

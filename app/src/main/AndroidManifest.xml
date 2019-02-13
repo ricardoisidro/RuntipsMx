@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.flash" />
@@ -29,16 +29,18 @@
 
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TermsConditions"
-            android:theme="@style/AppTheme.PopupsTheme"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.TermsConditions"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupsTheme" />
         <activity
             android:name=".activities.Presentacion01Activity"
             android:screenOrientation="landscape" />
@@ -59,9 +61,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CameraHeartRateActivity"
-            android:screenOrientation="portrait" >
-
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.RunActivity"
             android:screenOrientation="portrait"
@@ -74,7 +74,6 @@
             android:name=".activities.SpeedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.StartActivity" />
@@ -83,7 +82,7 @@
         <service android:name=".activities.LocationService">
             <meta-data
                 android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version"/>
+                android:value="@integer/google_play_services_version" />
         </service>
 
         <activity
@@ -96,14 +95,17 @@
         </activity>
         <activity
             android:name=".activities.StrengthActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.InfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.InfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.StartActivity" />
         </activity>
+        <activity android:name=".activities.VideoActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

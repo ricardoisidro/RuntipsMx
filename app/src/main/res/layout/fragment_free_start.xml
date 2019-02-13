@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background02"
     android:padding="16dp"
-    tools:context=".fragments.FreeStartFragment">
+    tools:context=".defaultversion.fragments.FreeStartFragment">
 
     <ImageView
         android:id="@+id/imgFreeStart01"
