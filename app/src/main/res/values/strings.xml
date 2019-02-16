@@ -68,12 +68,14 @@
     <string name="txtPrivacy">Aviso de privacidad</string>
 
     <string name="txtHeartRateTitle">Finalizar test físico</string>
-    <string name="txtHeartRateInstructions">Para finalizar el test, cubre la cámara
-        con tu dedo indice durante 20 segundos e ingresa el tiempo que realizaste en el test</string>
+    <string name="txtRadio1">Medir con cámara</string>
+    <string name="txtRadio2">Capturar pulso</string>
+    <string name="txtHeartRateInstructions">Cubre la cámara
+        con tu dedo indice hasta que el recuadro quede totalmente rojo</string>
     <string name="txtHeartRateInsertWeight">Peso (kg)</string>
     <string name="txtHeartRateInsertTime">Tiempo realizado en el test</string>
-    <string name="txtHeartRateMessage1">Pulso: </string>
-    <string name="txtHeartRateMessage2"> BPM</string>
+    <string name="txtHeartRateMessage1">Pulsaciones por minuto (PPM): </string>
+    <string name="txtHeartRateMessage2"> PPM</string>
     <string name="txtHeartRateContinue">Enviar resultados</string>
     <string name="txtHeartRateBack">Ver instrucciones</string>
     <string name="txtHeartRateIncorrectMeasure">Reintenta medir tu pulso</string>

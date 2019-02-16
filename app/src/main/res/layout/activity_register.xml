@@ -9,7 +9,7 @@
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
     android:background="@drawable/background01"
-    tools:context=".defaultversion.activities.RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
     <TextView
         android:id="@+id/txtRegisterTitle"

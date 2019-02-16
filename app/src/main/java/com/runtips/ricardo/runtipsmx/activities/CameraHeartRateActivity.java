@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
@@ -18,19 +19,22 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.widget.Toast;
 
-import com.runtips.ricardo.runtipsmx.activities.Presentacion01Activity;
-import com.runtips.ricardo.runtipsmx.activities.StartActivity;
 import com.runtips.ricardo.runtipsmx.classes.ImageProcessing;
 import com.runtips.ricardo.runtipsmx.R;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class CameraHeartRateActivity extends Activity{
+import static android.view.View.VISIBLE;
+
+public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCheckedChangeListener {
 
     SurfaceHolder SurfaceHolder;
 
@@ -51,14 +55,27 @@ public class CameraHeartRateActivity extends Activity{
 
     //private static final String TAG = "HeartRateMonitor";
 
-    private SurfaceView preview = null;
-    private static SurfaceHolder previewHolder = null;
-    private static Camera camera = null;
+    private static SurfaceHolder surfaceHolder = null;
+    private static SurfaceView surfaceView = null;
+    private static Camera myCamera = null;
+    private static PowerManager powerManager = null;
 
     private Button btnCheck;
     private Button btnBack;
+    private ImageView imgInstructions;
+    private TextView txtInstructions;
+    private TextView txtAux1;
     private static TextView txtCheck;
-    private static EditText editTextTime;
+    private TextView txtAux2;
+    private TextInputLayout txtInputLayoutTime;
+    private EditText editTextTime;
+    private TextInputLayout txtInputLayoutPulse;
+    private EditText editTextPulse;
+    private TextInputLayout txtInputLayoutWeight;
+    private EditText editTextWeight;
+    private RadioGroup radioGroup;
+    private RadioButton radioManual;
+    private RadioButton radioAuto;
 
     private static WakeLock wakeLock = null;
 
@@ -92,33 +109,89 @@ public class CameraHeartRateActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_heart_rate);
 
-        preview = findViewById(R.id.preview);
-        previewHolder = preview.getHolder();
-        previewHolder.addCallback(surfaceCallback);
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
-            previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        c = getApplicationContext();
 
+        radioGroup = findViewById(R.id.radioGroupAutoManual);
+        radioAuto = findViewById(R.id.radioAutomatic);
+        radioManual = findViewById(R.id.radioManual);
+
+        txtInstructions = findViewById(R.id.txtHeartPulseInstructions);
+        imgInstructions = findViewById(R.id.imageViewHeartRateInstructions);
+        surfaceView = findViewById(R.id.preview);
+
+        txtAux1 = findViewById(R.id.txtAux01);
+        txtAux2 = findViewById(R.id.txtAux02);
         txtCheck = findViewById(R.id.txtPhysicalCamHR);
+
+        txtInputLayoutTime = findViewById(R.id.textInputLayoutHeartPulseTime);
         editTextTime = findViewById(R.id.editHeartRateTime);
-
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "runtipsmx:screenwakelock");
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},0);
-        }
+        txtInputLayoutWeight = findViewById(R.id.textInputLayoutWeight);
+        editTextWeight = findViewById(R.id.editHeartRateWeight);
+        txtInputLayoutPulse = findViewById(R.id.textInputLayoutPulse);
+        editTextPulse = findViewById(R.id.editHeartRatePulse);
 
         btnCheck = findViewById(R.id.btnHeartRateOK);
         btnBack = findViewById(R.id.btnHeartRateBack);
 
+        editTextPulse.setVisibility(View.INVISIBLE);
+        txtInputLayoutPulse.setVisibility(View.INVISIBLE);
+
+        startSurface();
+
+        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+            switch (i) {
+            case R.id.radioAutomatic:
+
+                editTextPulse.setVisibility(View.INVISIBLE);
+                txtInputLayoutPulse.setVisibility(View.INVISIBLE);
+
+                //surfaceView.setVisibility(VISIBLE);
+                txtInstructions.setVisibility(View.VISIBLE);
+                imgInstructions.setVisibility(VISIBLE);
+
+                txtAux1.setVisibility(View.VISIBLE);
+                txtAux2.setVisibility(View.VISIBLE);
+                txtCheck.setVisibility(View.VISIBLE);
+                txtCheck.setText("");
+
+                startSurface();
+                runSensor();
+
+                break;
+
+            case R.id.radioManual:
+
+                txtAux1.setVisibility(View.INVISIBLE);
+                txtAux2.setVisibility(View.INVISIBLE);
+                txtCheck.setVisibility(View.INVISIBLE);
+
+                imgInstructions.setVisibility(View.INVISIBLE);
+                //surfaceView.setVisibility(View.INVISIBLE);
+                txtInstructions.setVisibility(View.INVISIBLE);
+
+                editTextPulse.setVisibility(View.VISIBLE);
+                txtInputLayoutPulse.setVisibility(View.VISIBLE);
+
+                stopSensor();
+
+                break;
+
+        }
+
+            }
+        });*/
+        radioGroup.setOnCheckedChangeListener(CameraHeartRateActivity.this);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CameraHeartRateActivity.this, Presentacion01Activity.class);
+                Intent intent = new Intent(CameraHeartRateActivity.this, VideoActivity.class);
                 startActivity(intent);
             }
         });
-
 
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,24 +213,97 @@ public class CameraHeartRateActivity extends Activity{
         });
     }
 
-    /*private void measure() {
-        preview = (SurfaceView) findViewById(R.id.preview);
-        previewHolder = preview.getHolder();
-        previewHolder.addCallback(surfaceCallback);
-        //previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
+        switch (i) {
+            case R.id.radioAutomatic:
 
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DoNotDimScreen");
+                editTextPulse.setVisibility(View.INVISIBLE);
+                txtInputLayoutPulse.setVisibility(View.INVISIBLE);
 
+                surfaceView.setVisibility(VISIBLE);
+                txtInstructions.setVisibility(View.VISIBLE);
+                imgInstructions.setVisibility(VISIBLE);
 
-    }*/
+                txtAux1.setVisibility(View.VISIBLE);
+                txtAux2.setVisibility(View.VISIBLE);
+                txtCheck.setVisibility(View.VISIBLE);
+                txtCheck.setText("");
+
+                runSensor();
+
+                break;
+
+            case R.id.radioManual:
+
+                txtAux1.setVisibility(View.INVISIBLE);
+                txtAux2.setVisibility(View.INVISIBLE);
+                txtCheck.setVisibility(View.INVISIBLE);
+
+                imgInstructions.setVisibility(View.INVISIBLE);
+                surfaceView.setVisibility(View.INVISIBLE);
+                txtInstructions.setVisibility(View.INVISIBLE);
+
+                editTextPulse.setVisibility(View.VISIBLE);
+                txtInputLayoutPulse.setVisibility(View.VISIBLE);
+
+                stopSensor();
+
+                break;
+
+        }
+    }
+
+    private void startSurface(){
+        surfaceHolder = surfaceView.getHolder();
+        surfaceHolder.addCallback(surfaceCallback);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
+            surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+        powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "runtipsmx:screenwakelock");
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},0);
+        }
+    }
+
+    private void runSensor(){
+        wakeLock.acquire(10*60*1000L /*5 minutes*/);
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+        }
+        else {
+            try {
+                myCamera = Camera.open(0);
+
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(c,"runSensorException" + e, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        startTime = System.currentTimeMillis();
+
+    }
+
+    private static void stopSensor() {
+
+        wakeLock.release();
+        myCamera.setPreviewCallback(null);
+        myCamera.stopPreview();
+        myCamera.release();
+        myCamera = null;
+    }
 
     @SuppressWarnings("deprecation")
     private static PreviewCallback previewCallback = new PreviewCallback() {
 
         /**
-         * {@inheritDoc}
+         * FROM: https://github.com/phishman3579/android-heart-rate-monitor
          */
         @Override
         public void onPreviewFrame(byte[] data, Camera cam) {
@@ -249,28 +395,32 @@ public class CameraHeartRateActivity extends Activity{
     private static SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
+            Toast.makeText(c, "surfaceCreated", Toast.LENGTH_LONG).show();
             try {
-                camera.setPreviewDisplay(previewHolder);
-                camera.setPreviewCallback(previewCallback);
-            } catch (Throwable t) {
+                myCamera.setPreviewDisplay(surfaceHolder);
+                myCamera.setPreviewCallback(previewCallback);
+            } catch (Exception ex) {
+                Toast.makeText(c, "sCrEx: " + ex, Toast.LENGTH_LONG).show();
             }
         }
 
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-            Camera.Parameters parameters = camera.getParameters();
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-            Camera.Size size = getSmallestPreviewSize(width, height, parameters);
-            if (size != null) {
-                parameters.setPreviewSize(size.width, size.height);
+            Toast.makeText(c, "surfaceChanged", Toast.LENGTH_SHORT).show();
+
+            try {
+                turnOnCamera(width, height);
             }
-            camera.setParameters(parameters);
-            camera.startPreview();
+            catch (Exception ex) {
+                Toast.makeText(c, "sChEx: " + ex, Toast.LENGTH_LONG).show();
+
+            }
+
         }
 
         @Override
         public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-
+            Toast.makeText(c, "surfaceDestroyed", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -294,6 +444,17 @@ public class CameraHeartRateActivity extends Activity{
         return result;
     }
 
+    private static void turnOnCamera(int width, int height) {
+        Camera.Parameters parameters = myCamera.getParameters();
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        Camera.Size size = getSmallestPreviewSize(width, height, parameters);
+        if (size != null) {
+            parameters.setPreviewSize(size.width, size.height);
+        }
+        myCamera.setParameters(parameters);
+        myCamera.startPreview();
+    }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
@@ -303,23 +464,12 @@ public class CameraHeartRateActivity extends Activity{
     protected void onResume(){
 
         super.onResume();
-        wakeLock.acquire(10*60*1000L /*5 minutes*/);
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
-        else
-            camera = Camera.open();
-
-        startTime = System.currentTimeMillis();
+        runSensor();
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        wakeLock.release();
-
-        camera.setPreviewCallback(null);
-        camera.stopPreview();
-        camera.release();
-        camera = null;
+        stopSensor();
     }
 }

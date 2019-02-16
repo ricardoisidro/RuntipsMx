@@ -8,7 +8,7 @@
     android:paddingEnd="@dimen/paddingRight"
     android:paddingStart="@dimen/paddingLeft"
     android:background="@drawable/background01"
-    tools:context=".defaultversion.activities.MainActivity"
+    tools:context=".activities.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
