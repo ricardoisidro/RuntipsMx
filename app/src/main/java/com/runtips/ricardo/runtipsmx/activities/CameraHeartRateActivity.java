@@ -29,8 +29,13 @@ import android.widget.Toast;
 
 import com.runtips.ricardo.runtipsmx.classes.ImageProcessing;
 import com.runtips.ricardo.runtipsmx.R;
+import com.runtips.ricardo.runtipsmx.models.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import io.realm.Realm;
 
 import static android.view.View.VISIBLE;
 
@@ -74,10 +79,14 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
     private TextInputLayout txtInputLayoutWeight;
     private EditText editTextWeight;
     private RadioGroup radioGroup;
-    private RadioButton radioManual;
-    private RadioButton radioAuto;
+    //private RadioButton radioManual;
+    //private RadioButton radioAuto;
+
+    private boolean isManual = false;
 
     private static WakeLock wakeLock = null;
+
+    private Realm realm;
 
     public static enum TYPE {
         GREEN, RED
@@ -111,9 +120,12 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
 
         c = getApplicationContext();
 
+        //realm.init(c);
+        realm = Realm.getDefaultInstance();
+
         radioGroup = findViewById(R.id.radioGroupAutoManual);
-        radioAuto = findViewById(R.id.radioAutomatic);
-        radioManual = findViewById(R.id.radioManual);
+        //radioAuto = findViewById(R.id.radioAutomatic);
+        //radioManual = findViewById(R.id.radioManual);
 
         txtInstructions = findViewById(R.id.txtHeartPulseInstructions);
         imgInstructions = findViewById(R.id.imageViewHeartRateInstructions);
@@ -197,17 +209,49 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
             @Override
             public void onClick(View view) {
 
-                if(beatsAvg < 200 && beatsAvg >= 60){
-                    if(editTextTime.getText().length() > 2){
+                if(isManual){
+                    String userPulse = editTextPulse.getText().toString();
+                    int pulse = Integer.parseInt(userPulse);
+                    String userWeight = editTextWeight.getText().toString();
+                    float weight = Float.parseFloat(userWeight);
+                    String userTime = editTextTime.getText().toString();
+                    List<String> time = Arrays.asList(userTime.split("\\s*:\\s*"));
+
+                    int minutes = Integer.parseInt(time.get(0));
+                    int seconds = Integer.parseInt(time.get(1));
+
+                    int totalNumberOfSecs = minutes*60*1000 + seconds*1000;
+
+                    createNewTest(totalNumberOfSecs, pulse, weight);
+
+                    if(editTextPulse.getText().length() > 1) {
+
                         Intent intent = new Intent(CameraHeartRateActivity.this, StartActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
-                    else
-                        Toast.makeText(CameraHeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectTime), Toast.LENGTH_LONG).show();
+                    else {
+                        Toast.makeText(CameraHeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectMeasure) + ".", Toast.LENGTH_LONG).show();
+                    }
+
                 }
-                else
-                    Toast.makeText(CameraHeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectMeasure), Toast.LENGTH_LONG).show();
+                else{
+                    if(beatsAvg < 200 && beatsAvg >= 60){
+                        if(editTextTime.getText().length() > 1){
+                            Intent intent = new Intent(CameraHeartRateActivity.this, StartActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(CameraHeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectTime), Toast.LENGTH_LONG).show();
+                    }
+
+                    else {
+                        Toast.makeText(CameraHeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectMeasure), Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
 
             }
         });
@@ -218,6 +262,8 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
 
         switch (i) {
             case R.id.radioAutomatic:
+
+                isManual = false;
 
                 editTextPulse.setVisibility(View.INVISIBLE);
                 txtInputLayoutPulse.setVisibility(View.INVISIBLE);
@@ -237,6 +283,8 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
 
             case R.id.radioManual:
 
+                isManual = true;
+
                 txtAux1.setVisibility(View.INVISIBLE);
                 txtAux2.setVisibility(View.INVISIBLE);
                 txtCheck.setVisibility(View.INVISIBLE);
@@ -248,7 +296,7 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
                 editTextPulse.setVisibility(View.VISIBLE);
                 txtInputLayoutPulse.setVisibility(View.VISIBLE);
 
-                stopSensor();
+                //stopSensor();
 
                 break;
 
@@ -471,5 +519,24 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
     protected void onPause(){
         super.onPause();
         stopSensor();
+    }
+
+    /** CRUD Actions **/
+    private void createNewTest(int time, int pulse, float weight) {
+
+        /*realm.beginTransaction();
+        Test test = new Test(time, pulse, weight);
+        realm.copyToRealm(test);
+        realm.commitTransaction();*/
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Test test2 = new Test(time, pulse, weight);
+                realm.copyToRealm(test2);
+            }
+        });
+
+
     }
 }

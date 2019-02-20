@@ -63,7 +63,6 @@
             android:ems="11"
             android:inputType="textPersonName"
             android:maxLines="1"
-            android:nextFocusDown="@id/textRegisterBirth"
             android:textSize="16sp"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -82,8 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
-            android:inputType="date"
-            android:hint="@string/txtBirthHint" />
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="date" />
 
     </android.support.design.widget.TextInputLayout>
 

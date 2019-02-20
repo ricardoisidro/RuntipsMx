@@ -1,5 +1,6 @@
 package com.runtips.ricardo.runtipsmx.activities;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import android.Manifest;
@@ -28,11 +29,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.runtips.ricardo.runtipsmx.activities.MainActivity;
 import com.runtips.ricardo.runtipsmx.activities.TermsConditions;
 import com.runtips.ricardo.runtipsmx.activities.VideoActivity;
+import com.runtips.ricardo.runtipsmx.api.API;
 import com.runtips.ricardo.runtipsmx.api.apiservices.RuntipsmxService;
+import com.runtips.ricardo.runtipsmx.classes.Session;
+import com.runtips.ricardo.runtipsmx.models.PostRegister;
+import com.runtips.ricardo.runtipsmx.models.UserRegister;
 import com.runtips.ricardo.runtipsmx.models.UserRegisterResponse;
 import com.runtips.ricardo.runtipsmx.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -98,60 +104,34 @@ public class RegisterActivity extends AppCompatActivity {
         MaterialBetterSpinner materialDesignSpinner = findViewById(R.id.spinnerRegisterState);
         materialDesignSpinner.setAdapter(arrayAdapter);
 
-
-        btnCalendar.setOnClickListener(new View.OnClickListener() {
+        editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String date_value = "";
 
-                try{
-                    date_value = editTextBirthday.getText().toString();
-                    String[] data = date_value.split("-");
-                    DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,
-                            android.R.style.Theme_Holo_Dialog_MinWidth,
-                            dateSetListener,
-                            Integer.parseInt(data[0]),
-                            Integer.parseInt(data[1])-1,
-                            Integer.parseInt(data[2]));
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
-                }
-                catch (Exception ex){
-                    Calendar cal = Calendar.getInstance();
-                    int year = cal.get(Calendar.YEAR);
-                    int month = cal.get(Calendar.MONTH);
-                    int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                    DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,
-                            android.R.style.Theme_Holo_Dialog_MinWidth,
-                            dateSetListener,
-                            year,
-                            month,
-                            day);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
-                }
+                openDateDialog();
             }
         });
 
-        dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        btnCalendar.setOnClickListener(view -> {
 
-                int realMonth = month + 1;
-                String longMonth, longDay;
-                String realDate = "";
-                if(String.valueOf(realMonth).length() == 1)
-                    longMonth = "0"+String.valueOf(realMonth);
-                else
-                    longMonth=String.valueOf(realMonth);
-                if(String.valueOf(dayOfMonth).length() == 1)
-                    longDay = "0"+String.valueOf(dayOfMonth);
-                else
-                    longDay = String.valueOf(dayOfMonth);
-                realDate = year+"-"+longMonth+"-"+longDay;
-                editTextBirthday.setText(realDate);
-            }
+            openDateDialog();
+
+        });
+
+        dateSetListener = (datePicker, year, month, dayOfMonth) -> {
+
+            int realMonth = month + 1;
+            String longMonth, longDay;
+            if(String.valueOf(realMonth).length() == 1)
+                longMonth = "0"+String.valueOf(realMonth);
+            else
+                longMonth=String.valueOf(realMonth);
+            if(String.valueOf(dayOfMonth).length() == 1)
+                longDay = "0"+String.valueOf(dayOfMonth);
+            else
+                longDay = String.valueOf(dayOfMonth);
+            String realDate = year+"-"+longMonth+"-"+longDay;
+            editTextBirthday.setText(realDate);
         };
 
         txtConditions = findViewById(R.id.txtRegisterConditions);
@@ -170,15 +150,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtConditions.setMovementMethod(LinkMovementMethod.getInstance());
 
         btnOK = findViewById(R.id.btnRegisterOK);
-
-        /*btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Saltarse registro en API
-                Intent intent = new Intent(RegisterActivity.this, Presentacion01Activity.class);
-                startActivity(intent);
-            }
-        });*/
 
         btnOK.setOnClickListener(new View.OnClickListener() {
             /*@Override
@@ -258,14 +229,15 @@ public class RegisterActivity extends AppCompatActivity {
 
                         }
                     });
-                    postRegister = null;
-                    user = null;
+                    //postRegister = null;
+                    //user = null;
                 }
 
                 else {
                 Toast.makeText(RegisterActivity.this, getResources().getString(R.string.msgRegisterAcceptTerms),Toast.LENGTH_LONG).show();
             }
             }*/
+
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this, VideoActivity.class);
@@ -287,8 +259,36 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void function(){
+    private void openDateDialog(){
 
+        try{
+            String date_value = editTextBirthday.getText().toString();
+            String[] data = date_value.split("-");
+            DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,
+                    android.R.style.Theme_Holo_Dialog_MinWidth,
+                    dateSetListener,
+                    Integer.parseInt(data[0]),
+                    Integer.parseInt(data[1])-1,
+                    Integer.parseInt(data[2]));
+            dialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        }
+        catch (Exception ex){
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
 
+            DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,
+                    android.R.style.Theme_Holo_Dialog_MinWidth,
+                    dateSetListener,
+                    year,
+                    month,
+                    day);
+            dialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        }
     }
 }

@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.runtips.ricardo.runtipsmx.activities.StartActivity;
 import com.runtips.ricardo.runtipsmx.classes.AlternativeChronometer;
-import com.runtips.ricardo.runtipsmx.db.DBHelper;
 import com.runtips.ricardo.runtipsmx.R;
 
 import java.util.Timer;
@@ -38,7 +37,7 @@ public class RunActivity extends AppCompatActivity{
     //private Tracker tracker;
     //private Workout workout;
     private Timer timer;
-    SQLiteDatabase dataBase;
+    //SQLiteDatabase dataBase;
 
     private enum GPSLevel {POOR, ACCEPTABLE, GOOD};
 
@@ -60,7 +59,7 @@ public class RunActivity extends AppCompatActivity{
 
         savePreviousTab();
 
-        dataBase = DBHelper.getWritableDatabase(this);
+        //dataBase = DBHelper.getWritableDatabase(this);
 
         //bindGpsTracker();
         //gpsStatus = new GPSStatus(this);
