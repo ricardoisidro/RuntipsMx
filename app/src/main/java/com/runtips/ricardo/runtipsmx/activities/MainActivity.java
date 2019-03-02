@@ -21,10 +21,14 @@ import android.widget.Toast;
 
 import com.runtips.ricardo.runtipsmx.activities.RegisterActivity;
 import com.runtips.ricardo.runtipsmx.activities.StartActivity;
+import com.runtips.ricardo.runtipsmx.api.API;
 import com.runtips.ricardo.runtipsmx.api.apiservices.RuntipsmxService;
 import com.runtips.ricardo.runtipsmx.classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
 import com.runtips.ricardo.runtipsmx.models.LoginResponse;
+import com.runtips.ricardo.runtipsmx.models.PostLogin;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -108,8 +112,8 @@ public class MainActivity extends AppCompatActivity{
             //return false;
         }
         else{
-            openStartActivity();
-            /*
+            //openStartActivity();
+
             runtipsmxLoginService = API.getApi().create(RuntipsmxService.class);
             final String correo = editTextUser.getText().toString();
             final String pwd = editTextPass.getText().toString();
@@ -171,7 +175,7 @@ public class MainActivity extends AppCompatActivity{
                     Toast.makeText(MainActivity.this, "onFailure: Problema en login", Toast.LENGTH_LONG).show();
 
                 }
-            });*/
+            });
         }
     }
 

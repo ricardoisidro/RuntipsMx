@@ -59,6 +59,8 @@
     <string name="btnRegisterCancel">Cancelar</string>
     <string name="btnRegisterOK">Continuar</string>
 
+    <string name="btnEditOK">Guardar cambios</string>
+
     <string name="msgRegisterError">Error en el formulario. Verifique sus datos</string>
     <string name="msgRegisterUnlegibleError">Error desconocido</string>
     <string name="msgRegisterMailTaken">Correo ya existente. Utilice otro</string>

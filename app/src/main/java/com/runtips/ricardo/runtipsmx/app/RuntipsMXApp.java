@@ -3,6 +3,7 @@ package com.runtips.ricardo.runtipsmx.app;
 import android.app.Application;
 
 import com.runtips.ricardo.runtipsmx.models.Test;
+import com.runtips.ricardo.runtipsmx.models.UserModel;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,7 +15,7 @@ import io.realm.RealmResults;
 public class RuntipsMXApp extends Application {
 
     public static AtomicInteger testId = new AtomicInteger();
-
+    public static AtomicInteger userId = new AtomicInteger();
 
     @Override
     public void onCreate() {
@@ -22,6 +23,7 @@ public class RuntipsMXApp extends Application {
         setupRealmConfig();
         Realm realm = Realm.getDefaultInstance();
         testId = getIdByTable(realm, Test.class);
+        //userId = getIdByTable(realm, UserModel.class);
         realm.close();
 
     }

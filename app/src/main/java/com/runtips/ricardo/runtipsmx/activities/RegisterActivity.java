@@ -21,6 +21,7 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,13 +37,16 @@ import com.runtips.ricardo.runtipsmx.activities.TermsConditions;
 import com.runtips.ricardo.runtipsmx.activities.VideoActivity;
 import com.runtips.ricardo.runtipsmx.api.API;
 import com.runtips.ricardo.runtipsmx.api.apiservices.RuntipsmxService;
+import com.runtips.ricardo.runtipsmx.app.RuntipsMXApp;
 import com.runtips.ricardo.runtipsmx.classes.Session;
 import com.runtips.ricardo.runtipsmx.models.PostRegister;
+import com.runtips.ricardo.runtipsmx.models.UserModel;
 import com.runtips.ricardo.runtipsmx.models.UserRegister;
 import com.runtips.ricardo.runtipsmx.models.UserRegisterResponse;
 import com.runtips.ricardo.runtipsmx.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private ImageButton btnCalendar;
 
+    private String selectedSex;
     private RadioGroup radioGroupGender;
+    private String selectedState;
     private EditText editTextPhone;
     private EditText editTextMail;
     private EditText editTextPassword;
@@ -72,11 +78,17 @@ public class RegisterActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
+    private Realm realm;
+
+
     public RegisterActivity(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        realm = Realm.getDefaultInstance();
+
         setContentView(R.layout.activity_register);
 
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
@@ -93,16 +105,39 @@ public class RegisterActivity extends AppCompatActivity {
         btnCalendar = findViewById(R.id.btnRegisterCalendar);
 
         radioGroupGender = findViewById(R.id.radioGroupRegisterGender);
-        editTextPhone = findViewById(R.id.txtRegisterPhone);
-        editTextMail = findViewById(R.id.txtRegisterMail);
-        editTextPassword = findViewById(R.id.txtRegisterPassword);
-        editTextPassword2 = findViewById(R.id.txtRegisterConfirmPassword);
+        radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.radioRegisterMan:
+                        selectedSex = "M";
+                        break;
+                    case R.id.radioRegisterWoman:
+                        selectedSex = "F";
+                        break;
+                }
+            }
+        });
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line,
                 getResources().getStringArray(R.array.spinnerRegisterStates));
         MaterialBetterSpinner materialDesignSpinner = findViewById(R.id.spinnerRegisterState);
         materialDesignSpinner.setAdapter(arrayAdapter);
+
+        materialDesignSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                selectedState = adapterView.getItemAtPosition(pos).toString();
+            }
+        });
+
+        editTextPhone = findViewById(R.id.txtRegisterPhone);
+        editTextMail = findViewById(R.id.txtRegisterMail);
+        editTextPassword = findViewById(R.id.txtRegisterPassword);
+        editTextPassword2 = findViewById(R.id.txtRegisterConfirmPassword);
+
+
 
         editTextBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,30 +187,33 @@ public class RegisterActivity extends AppCompatActivity {
         btnOK = findViewById(R.id.btnRegisterOK);
 
         btnOK.setOnClickListener(new View.OnClickListener() {
-            /*@Override
+            @Override
             public void onClick(View view) {
                 if (checkConditions.isChecked()) {
 
+                    //String sex = "";
+                    final int sexSelected = radioGroupGender.getCheckedRadioButtonId();
+                    //final int stateSelected = materialDesignSpinner
                     runtipsmxService = API.getApi().create(RuntipsmxService.class);
-                    String sex = "";
                     final String mail = editTextMail.getText().toString();
-                    String celphone = editTextPhone.getText().toString();
+                    final String celphone = editTextPhone.getText().toString();
                     final String name = editTextName.getText().toString();
-                    String surname = editTextSurname.getText().toString();
-                    String birth = editTextBirthday.getText().toString();
+                    final String surname = editTextSurname.getText().toString();
+                    final String birth = editTextBirthday.getText().toString();
                     final String pass = editTextPassword.getText().toString();
                     final String pass2 = editTextPassword2.getText().toString();
-                    int opc = radioGroupGender.getCheckedRadioButtonId();
-                    switch (opc) {
+
+                    /*switch (sexSelected) {
+
                         case R.id.radioRegisterMan:
                             sex = "M";
                             break;
                         case R.id.radioRegisterWoman:
                             sex = "F";
                             break;
-                    }
+                    }*/
 
-                    UserRegister user = new UserRegister(mail, celphone, name, surname, 70, birth, sex, pass, pass2);
+                    UserRegister user = new UserRegister(mail, celphone, name, surname, 70, birth, selectedSex, pass, pass2);
                     PostRegister postRegister = new PostRegister();
                     postRegister.setUser(user);
 
@@ -191,7 +229,10 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.makeText(RegisterActivity.this, String.valueOf(userRegisterResponse.getDataRegisterResponse().getId()) + ", bienvenid@ " +
                                                 userRegisterResponse.getDataRegisterResponse().getName(), Toast.LENGTH_LONG).show();
                                         Session.saveSharedPreferences(prefs, mail, pass, name);
-                                        Intent intent = new Intent(RegisterActivity.this, Presentacion01Activity.class);
+
+                                        insertUser(name, surname, birth, selectedSex, selectedState, celphone, mail, pass);
+
+                                        Intent intent = new Intent(RegisterActivity.this, VideoActivity.class);
                                         startActivity(intent);
                                         break;
                                     default:
@@ -234,15 +275,21 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 else {
-                Toast.makeText(RegisterActivity.this, getResources().getString(R.string.msgRegisterAcceptTerms),Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.msgRegisterAcceptTerms),Toast.LENGTH_LONG).show();
+                }
             }
-            }*/
 
-            @Override
+            /*@Override
             public void onClick(View view) {
+                String name = editTextName.getText().toString();
+                String lastname = editTextSurname.getText().toString();
+                String birthday = editTextBirthday.getText().toString();
+                switch (radioGroupGender) {
+
+                }
                 Intent intent = new Intent(RegisterActivity.this, VideoActivity.class);
                 startActivity(intent);
-            }
+            }*/
 
         });
 
@@ -256,6 +303,35 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    /** CRUD Actions **/
+    private void insertUser(String name,
+                            String surname,
+                            String birth,
+                            String sex,
+                            String state,
+                            String cellnumber,
+                            String mail,
+                            String pwd) {
+
+        String facebook = "00000";
+
+        realm.executeTransaction(realm -> {
+            UserModel user = realm.createObject(UserModel.class, 1);
+            user.setName(name);
+            user.setSurname(surname);
+            user.setBirthday(birth);
+            user.setSex(sex);
+            user.setState(state);
+            user.setPhone(cellnumber);
+            user.setMail(mail);
+            user.setPassword(pwd);
+            user.setFacebook(facebook);
+            realm.insert(user);
+        });
+
 
     }
 
@@ -291,4 +367,6 @@ public class RegisterActivity extends AppCompatActivity {
             dialog.show();
         }
     }
+
+
 }

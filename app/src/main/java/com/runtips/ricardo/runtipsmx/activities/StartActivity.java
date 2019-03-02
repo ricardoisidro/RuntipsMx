@@ -20,10 +20,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.runtips.ricardo.runtipsmx.activities.ContactActivity;
-import com.runtips.ricardo.runtipsmx.activities.InfoActivity;
-import com.runtips.ricardo.runtipsmx.activities.MainActivity;
-import com.runtips.ricardo.runtipsmx.activities.PlansActivity;
 import com.runtips.ricardo.runtipsmx.classes.PagerAdapter;
 import com.runtips.ricardo.runtipsmx.classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
@@ -196,7 +192,7 @@ public class StartActivity extends AppCompatActivity
     }
 
     private void openInfoActivity(){
-        Intent intent = new Intent(StartActivity.this, InfoActivity.class);
+        Intent intent = new Intent(StartActivity.this, EditUserActivity.class);
         startActivity(intent);
     }
 
