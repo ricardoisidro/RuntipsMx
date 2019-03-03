@@ -16,16 +16,21 @@ import com.runtips.ricardo.runtipsmx.activities.RunActivity;
 import com.runtips.ricardo.runtipsmx.classes.Session;
 import com.runtips.ricardo.runtipsmx.R;
 
+import org.w3c.dom.Text;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FreeStartFragment extends Fragment {
 
 
-    private Button btnRun;
     private Context thisContext;
     private TextView txtInstructions;
     private SharedPreferences prefs;
+
+    private TextView txtDate;
+    private TextView txtVO2;
+    private TextView txtHealth;
 
     public FreeStartFragment() {
         // Required empty public constructor
@@ -41,20 +46,22 @@ public class FreeStartFragment extends Fragment {
         thisContext = container.getContext();
         prefs = this.getActivity().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
-        btnRun = view.findViewById(R.id.buttonFreeRun);
-        txtInstructions = view.findViewById(R.id.txtFreeStartWelcome);
-        txtInstructions.setText(getString(R.string.txtStartFreeWelcome, Session.getUserNamePrefs(prefs)));
+        //btnRun = view.findViewById(R.id.buttonFreeRun);
+        txtInstructions = view.findViewById(R.id.txtStartWelcome);
+        txtDate = view.findViewById(R.id.txtStartDateResult);
+        txtVO2 = view.findViewById(R.id.txtStartVO2Result);
+        txtHealth = view.findViewById(R.id.txtStartHealtResult);
 
-        btnRun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(thisContext, RunActivity.class);
-                startActivity(intent);
-
-            }
-        });
+        setTexts();
 
         return view;
+    }
+
+    private void setTexts() {
+        txtInstructions.setText(getString(R.string.txtStartInitialWelcome, Session.getUserNamePrefs(prefs)));
+        txtDate.setText("2019/02/02");
+        txtVO2.setText("41.95 ml/kg/min");
+        txtHealth.setText("Bueno");
     }
 
 }

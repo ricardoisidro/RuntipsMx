@@ -100,13 +100,15 @@
     <string name="menuDatos">Datos personales</string>
     <string name="menuCerrarSesion">Cerrar sesión</string>
 
-    <string name="txtTab01">Ejercicio libre</string>
+    <string name="txtTab01">Mi información</string>
     <string name="txtTab02">Plan semanal</string>
 
     <string name="txtStartPaidWelcome">Hola %1$s, aquí tienes el entrenamiento de esta semana.</string>
-    <string name="txtStartFreeWelcome">Hola %1$s, puedes utilizar las siguientes herramientas.
-        Si deseas un entrenamiento personalizado, utiliza los medios de contacto para realizar
-        tu pago.</string>
+    <string name="txtStartInitialWelcome">%1$s, tu último resultado del test físico es: </string>
+
+    <string name="txtStartDateTitle">Fecha:</string>
+    <string name="txtStartVO2Title">VO2 máx. actual</string>
+    <string name="txtStartHealthTitle">Estado de salud</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

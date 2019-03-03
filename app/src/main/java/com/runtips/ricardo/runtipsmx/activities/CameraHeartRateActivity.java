@@ -120,10 +120,10 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
 
         c = getApplicationContext();
 
-        //realm.init(c);
         realm = Realm.getDefaultInstance();
 
         radioGroup = findViewById(R.id.radioGroupAutoManual);
+        //radioGroup.check(R.id.radioManual);
         //radioAuto = findViewById(R.id.radioAutomatic);
         //radioManual = findViewById(R.id.radioManual);
 
@@ -145,6 +145,16 @@ public class CameraHeartRateActivity extends Activity implements RadioGroup.OnCh
         btnCheck = findViewById(R.id.btnHeartRateOK);
         btnBack = findViewById(R.id.btnHeartRateBack);
 
+        /*txtAux1.setVisibility(View.INVISIBLE);
+        txtAux2.setVisibility(View.INVISIBLE);
+        txtCheck.setVisibility(View.INVISIBLE);
+
+        imgInstructions.setVisibility(View.INVISIBLE);
+        surfaceView.setVisibility(View.INVISIBLE);
+        txtInstructions.setVisibility(View.INVISIBLE);
+
+        editTextPulse.setVisibility(View.VISIBLE);
+        txtInputLayoutPulse.setVisibility(View.VISIBLE);*/
         editTextPulse.setVisibility(View.INVISIBLE);
         txtInputLayoutPulse.setVisibility(View.INVISIBLE);
 

@@ -8,14 +8,14 @@
     android:background="@drawable/background02"
     android:orientation="vertical"
     android:paddingTop="@dimen/paddingTop"
-    tools:context=".defaultversion.fragments.PaidStartFragment"
+    tools:context=".fragments.PaidStartFragment"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
         android:id="@+id/imgPaidStart01"
         android:layout_width="240dp"
         android:layout_height="103dp"
-        android:src="@drawable/runtipslogo"
+        android:src="@drawable/runtipslogo2"
         app:layout_constraintBottom_toTopOf="@+id/txtStartWelcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

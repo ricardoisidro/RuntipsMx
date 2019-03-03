@@ -1,38 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background02"
-    android:padding="16dp"
-    tools:context=".defaultversion.fragments.FreeStartFragment">
+    android:orientation="vertical"
+    android:paddingStart="@dimen/paddingLeft"
+    android:paddingEnd="@dimen/paddingRight"
+    android:paddingTop="@dimen/paddingTop"
+    android:paddingBottom="@dimen/paddingBottom"
+    android:background="@drawable/background02">
 
     <ImageView
         android:id="@+id/imgFreeStart01"
-        android:layout_width="307dp"
-        android:layout_height="166dp"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/txtFreeStartWelcome"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/runtipslogo" />
+        android:layout_width="240dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center"
+        android:src="@drawable/runtipslogo2" />
 
     <TextView
-        android:id="@+id/txtFreeStartWelcome"
+        android:id="@+id/txtStartWelcome"
+        android:layout_height="32dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:text="@string/txtStartFreeWelcome"
+        android:text="@string/txtStartInitialWelcome"
         android:textAlignment="center"
+        android:layout_gravity="center"
         android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-    <Button
-        android:id="@+id/buttonFreeRun"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="152dp"
-        android:text="@string/btnFreeRun" />
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtStartDateTitle"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtStartVO2Title"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txtStartHealthTitle"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtStartDateResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/txtStartVO2Result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/txtStartHealtResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>
