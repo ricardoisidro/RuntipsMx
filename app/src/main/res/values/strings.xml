@@ -69,17 +69,17 @@
     <string name="txtTermsTitle">Términos y condiciones</string>
     <string name="txtPrivacy">Aviso de privacidad</string>
 
-    <string name="txtHeartRateTitle">Finalizar test físico</string>
+    <string name="txtHeartRateTitle">Guardar test físico</string>
     <string name="txtRadio1">Medir con cámara</string>
     <string name="txtRadio2">Capturar pulso</string>
     <string name="txtHeartRateInstructions">Cubre la cámara
         con tu dedo indice hasta que el recuadro quede totalmente rojo</string>
-    <string name="txtHeartRateInsertWeight">Peso (kg)</string>
-    <string name="txtHeartRateInsertTime">Tiempo realizado en el test</string>
-    <string name="txtHeartRateMessage1">Pulsaciones por minuto (PPM): </string>
+    <string name="txtHeartRateInsertWeight">Peso actual (kg)</string>
+    <string name="txtHeartRateInsertTime">Tiempo en el test</string>
+    <string name="txtHeartRateMessage1">Pulsaciones por minuto: </string>
     <string name="txtHeartRateMessage2"> PPM</string>
-    <string name="txtHeartRateContinue">Enviar resultados</string>
-    <string name="txtHeartRateBack">Ver instrucciones</string>
+    <string name="txtHeartRateContinue">Guardar test</string>
+    <string name="txtHeartRateBack">Repetir indicaciones</string>
     <string name="txtHeartRateIncorrectMeasure">Reintenta medir tu pulso</string>
     <string name="txtHeartRateIncorrectTime">Ingresa valor de tiempo</string>
     <!--<string name="urlTestFisico">https://youtu.be/0neVuGOg6NY</string>-->

@@ -2,10 +2,8 @@ package com.runtips.ricardo.runtipsmx.activities;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,23 +17,22 @@ import java.util.List;
 
 import io.realm.Realm;
 
-public class HeartRateActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText txtWeight;
     private EditText txtPulse;
     private EditText txtTime;
 
     private Button btnSave;
-    private Button btnInstructions;
 
     private TimePickerDialog.OnTimeSetListener timeSetListener;
 
     private Realm realm;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_heart_rate);
+        setContentView(R.layout.activity_new_test);
 
         realm = Realm.getDefaultInstance();
 
@@ -43,19 +40,9 @@ public class HeartRateActivity extends AppCompatActivity implements View.OnClick
         txtPulse = findViewById(R.id.txtHeartRatePulse);
         txtTime = findViewById(R.id.txtHeartRateTime);
         btnSave = findViewById(R.id.btnHeartRateSave);
-        btnInstructions = findViewById(R.id.btnHeartRateBack);
 
         btnSave.setOnClickListener(this);
-
-        btnInstructions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HeartRateActivity.this, VideoActivity.class);
-                startActivity(intent);
-            }
-        });
     }
-
 
     @Override
     public void onClick(View view) {
@@ -78,17 +65,17 @@ public class HeartRateActivity extends AppCompatActivity implements View.OnClick
 
                     createNewTest(totalNumberOfSecs, pulse, weight);
 
-                    Intent intent = new Intent(HeartRateActivity.this, StartActivity.class);
+                    Intent intent = new Intent(NewTestActivity.this, StartActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(HeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectTime) + ".", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NewTestActivity.this, getResources().getText(R.string.txtHeartRateIncorrectTime) + ".", Toast.LENGTH_LONG).show();
                 }
             }
         }
         else {
-            Toast.makeText(HeartRateActivity.this, getResources().getText(R.string.txtHeartRateIncorrectMeasure), Toast.LENGTH_LONG).show();
+            Toast.makeText(NewTestActivity.this, getResources().getText(R.string.txtHeartRateIncorrectMeasure), Toast.LENGTH_LONG).show();
         }
 
     }

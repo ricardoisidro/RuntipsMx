@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -34,9 +35,9 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activities.TermsConditions"
@@ -60,15 +61,18 @@
         <activity
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.VideoActivity"
+        <activity
+            android:name=".activities.VideoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activities.Video2Activity"
+        <activity
+            android:name=".activities.Video2Activity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activities.CameraHeartRateActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HeartRateActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.RunActivity"
             android:screenOrientation="portrait"
@@ -77,6 +81,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.StartActivity" />
         </activity>
+
         <activity
             android:name=".activities.SpeedActivity"
             android:screenOrientation="portrait"
@@ -93,6 +98,9 @@
         </service>
 
         <activity
+            android:name=".activities.StrengthActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.PlansActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar">
@@ -101,9 +109,6 @@
                 android:value=".activities.StartActivity" />
         </activity>
         <activity
-            android:name=".activities.StrengthActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.EditUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.YesActionBar">
@@ -111,7 +116,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.StartActivity" />
         </activity>
-
+        <activity android:name=".activities.NewTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.YesActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.StartActivity" />
+        </activity>
+"
     </application>
 
 </manifest>

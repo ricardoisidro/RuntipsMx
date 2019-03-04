@@ -161,11 +161,17 @@ public class StartActivity extends AppCompatActivity
 
         if (id == R.id.navPaquetes) {
             openPlansActivity();
-        } else if (id == R.id.navDatosUsuario) {
+        }
+        else if (id == R.id.navDatosUsuario) {
             openInfoActivity();
-        } else if (id == R.id.navContacto) {
+        }
+        else if (id == R.id.navContacto) {
             openContactActivity();
-        } else if (id == R.id.navCerrarSesion) {
+        }
+        else if (id == R.id.navTestFisico) {
+            openTestFisico();
+        }
+        else if (id == R.id.navCerrarSesion) {
             Session.removeSharedPreferences(prefs);
             logOut();
         }
@@ -193,6 +199,11 @@ public class StartActivity extends AppCompatActivity
 
     private void openInfoActivity(){
         Intent intent = new Intent(StartActivity.this, EditUserActivity.class);
+        startActivity(intent);
+    }
+
+    private void openTestFisico(){
+        Intent intent = new Intent(StartActivity.this, NewTestActivity.class);
         startActivity(intent);
     }
 

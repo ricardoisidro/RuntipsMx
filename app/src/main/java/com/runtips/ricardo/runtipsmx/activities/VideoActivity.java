@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.runtips.ricardo.runtipsmx.R;
@@ -12,12 +13,17 @@ import com.runtips.ricardo.runtipsmx.activities.CameraHeartRateActivity;
 
 public class VideoActivity extends AppCompatActivity {
 
+    //private MediaController mc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
         VideoView videoview = (VideoView)findViewById(R.id.videoView);
+        MediaController mc = new MediaController(this);
+        mc.setAnchorView(videoview);
+        videoview.setMediaController(mc);
+
         String path = "android.resource://" + getPackageName() + "/" + R.raw.testinstructions;
         videoview.setVideoURI(Uri.parse(path));
         videoview.start();
