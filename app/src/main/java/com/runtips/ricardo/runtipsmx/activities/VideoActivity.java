@@ -13,7 +13,6 @@ import com.runtips.ricardo.runtipsmx.activities.CameraHeartRateActivity;
 
 public class VideoActivity extends AppCompatActivity {
 
-    //private MediaController mc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

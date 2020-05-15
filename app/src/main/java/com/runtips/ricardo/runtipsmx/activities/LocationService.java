@@ -39,13 +39,6 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     private FusedLocationProviderClient myFusedLocationProviderClient;
     private LocationCallback mLocationCallback;
 
-//    mLocationCallback = new LocationCallback() {
-//        @Override
-//        public void onLocationResult(LocationResult locationResult) {
-//            super.onLocationResult(locationResult);
-//            }
-//    };
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

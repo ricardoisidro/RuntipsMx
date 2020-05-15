@@ -203,16 +203,6 @@ public class RegisterActivity extends AppCompatActivity {
                     final String pass = editTextPassword.getText().toString();
                     final String pass2 = editTextPassword2.getText().toString();
 
-                    /*switch (sexSelected) {
-
-                        case R.id.radioRegisterMan:
-                            sex = "M";
-                            break;
-                        case R.id.radioRegisterWoman:
-                            sex = "F";
-                            break;
-                    }*/
-
                     UserRegister user = new UserRegister(mail, celphone, name, surname, 70, birth, selectedSex, pass, pass2);
                     PostRegister postRegister = new PostRegister();
                     postRegister.setUser(user);
