@@ -84,9 +84,6 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view){
                 String mail = editTextUser.getText().toString();
                 String pass = editTextPass.getText().toString();
-
-
-
                 validLogin(mail, pass);
             }
         });
@@ -105,14 +102,11 @@ public class MainActivity extends AppCompatActivity{
     private void validLogin(String mail, final String password){
         if(!isValidMail(mail)){
             Toast.makeText(this, R.string.msgMailNotValid, Toast.LENGTH_SHORT).show();
-            //return false;
         }
         else if (!isValidPassword(password)){
             Toast.makeText(this,R.string.msgPasswordNotValid, Toast.LENGTH_SHORT).show();
-            //return false;
         }
         else{
-            //openStartActivity();
 
             runtipsmxLoginService = API.getApi().create(RuntipsmxService.class);
             final String correo = editTextUser.getText().toString();
@@ -127,8 +121,6 @@ public class MainActivity extends AppCompatActivity{
                         switch(response.code()) {
                             case 200: case 201:
                                 LoginResponse loginResponse = response.body();
-                                //Toast.makeText(MainActivity.this, String.valueOf(response.body().getData().getToken()) + String .valueOf(response.body().getData().getUser()), Toast.LENGTH_LONG).show();
-                                //Toast.makeText(MainActivity.this, loginResponse.getData().getToken() + loginResponse.getData().getUser().getName() + loginResponse.getData().getUser()., Toast.LENGTH_LONG).show();
                                 if(checkboxRemember.isChecked()) {
                                     Session.saveSharedPreferences(prefs, loginResponse.getData().getUser().getEmail(), password, loginResponse.getData().getUser().getName());
                                 }
